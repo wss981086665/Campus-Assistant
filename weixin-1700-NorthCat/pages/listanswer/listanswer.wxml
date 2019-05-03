@@ -1,0 +1,29 @@
+<view>
+<view wx:if="{{ensure}}">
+  <view wx:for="{{answerlist}}" wx:key="{{answerlist}}.id" we:for-index="index" wx:for-item="item">
+    <view class='textraea2'>
+      <view class='topic-container'>
+        <view class='topic-img'>
+          <image class="topic-i" src="{{item.element2}}" mode="cover"></image>
+        </view>
+        <view name="author" class='author-back'>
+          <view name="author" class='author2'>{{item.element3}}</view>
+          <view name="time" class='time'>{{item.element4}}</view>
+        </view>
+      </view>
+      <view name="content" class='content2'>{{item.answercontent}}</view>
+      <image class='content-img' data-demo="http://www.xztywss.top/img/upload/{{item.element5}}" src="http://www.xztywss.top/img/upload/{{item.element5}}" hidden="{{item.element5 == 'defaultimg.jpg'}}" bindtap='showcommentimg' mode='aspectFill'></image>
+    </view>
+  </view>
+  <view hidden='{{hasvalue}}'>
+    <view class='hasvalue'>
+      <image class='hasimg' src="../../image/pure.png" mode="cover"></image>
+    </view>
+    <view class='hastext'>暂时没有人解答</view>
+  </view>
+</view>
+  <block wx:else>
+    <view></view>
+  </block>
+
+</view>

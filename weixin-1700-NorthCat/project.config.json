@@ -1,0 +1,99 @@
+{
+	"description": "项目配置文件",
+	"packOptions": {
+		"ignore": []
+	},
+	"setting": {
+		"urlCheck": false,
+		"es6": true,
+		"postcss": true,
+		"minified": true,
+		"newFeature": true
+	},
+	"compileType": "miniprogram",
+	"libVersion": "2.2.5",
+	"appid": "wxd4c54893e1e4ed01",
+	"projectname": "weixin-1600-NorthCat",
+	"debugOptions": {
+		"hidedInDevtools": []
+	},
+	"isGameTourist": false,
+	"simulatorType": "wechat",
+	"simulatorPluginLibVersion": {},
+	"condition": {
+		"search": {
+			"current": -1,
+			"list": []
+		},
+		"conversation": {
+			"current": -1,
+			"list": []
+		},
+		"plugin": {
+			"current": -1,
+			"list": []
+		},
+		"game": {
+			"currentL": -1,
+			"list": []
+		},
+		"miniprogram": {
+			"current": 8,
+			"list": [
+				{
+					"id": 0,
+					"name": "homepage",
+					"pathName": "pages/homepage/homepage",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "myself",
+					"pathName": "pages/myself/myself",
+					"query": ""
+				},
+				{
+					"id": 3,
+					"name": "article",
+					"pathName": "pages/article/article",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "answer",
+					"pathName": "pages/answer/answer",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "article-detail",
+					"pathName": "pages/article-detail/article-detail",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "article-share",
+					"pathName": "pages/article-share/article-share",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "articlelist-display",
+					"pathName": "pages/listarticle-display/listarticle-display",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "question",
+					"pathName": "pages/question/question",
+					"query": ""
+				},
+				{
+					"id": -1,
+					"name": "apply-teacher",
+					"pathName": "pages/apply-teacher/apply-teacher"
+				}
+			]
+		}
+	}
+}

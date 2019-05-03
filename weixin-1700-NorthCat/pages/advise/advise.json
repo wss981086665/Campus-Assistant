@@ -1,0 +1,8 @@
+{
+  "usingComponents": {
+    "i-cell": "../../dist/cell/index"
+  },
+  "navigationBarTitleText": "问题反馈",
+  "navigationBarBackgroundColor": "#64B4FF",
+  "navigationBarTextStyle": "white"
+}

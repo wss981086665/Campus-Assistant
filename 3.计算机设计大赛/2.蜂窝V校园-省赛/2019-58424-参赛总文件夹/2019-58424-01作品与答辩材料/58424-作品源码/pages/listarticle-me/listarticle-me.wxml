@@ -1,0 +1,27 @@
+<view>
+<view wx:if="{{ensure}}">
+  <view wx:for="{{articlelist}}" wx:key wx:for-index="index" wx:for-item="item">
+    <view class='article-dis'>
+      <view class='title-dis'  bindtap='listarticle' data-id='{{item.id}}'>{{item.title}}</view>
+      <image class='image-dis' bindtap='previewImage' src="https://www.xztywss.top/img/upload/{{item.fac1}}" mode="aspectFill" data-src='https://www.xztywss.top/img/upload/{{item.fac1}}'></image>
+      <scroll-view class='content-dis'  bindtap='listarticle' data-id='{{item.id}}'>{{item.content}}</scroll-view>
+      <image class='delete' src='../../image/delete3.png' bindtap='delete' mode='cover' data-id='{{item.id}}' hidden='{{judgedelete}}'></image>
+    </view>
+  </view>
+  <view class='pageit' hidden='{{hiddenpage}}'>
+    <view class='loadmore' bindtap='loadmore'>--点击加载更多--</view>
+  </view>
+  <view class='blank'></view>
+  <view hidden='{{hasvalue}}'>
+    <view class='hasvalue'>
+      <image class='hasimg' src="../../image/pure.png" mode="cover"></image>
+    </view>
+    <view class='hastext'>什么东西也没有</view>
+  </view>
+   <view class='juddelete' bindtap='condelete' hidden='{{!judgedelete || rejudge}}'>删除</view>
+   <view class='juddelete' bindtap='nodelete' hidden='{{judgedelete || rejudge}}'>取消</view>
+</view>
+  <block wx:else>
+    <view></view>
+  </block>
+</view>

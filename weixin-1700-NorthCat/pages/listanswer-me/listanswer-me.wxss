@@ -1,0 +1,107 @@
+page{
+  background-color: #F0F0F0;
+}
+.textarea{
+  width: 96%;
+  background-color: white;
+  margin: 0 auto;
+  margin-top: 10rpx;
+  border-top-left-radius: 8rpx;
+  border-top-right-radius: 8rpx;
+  overflow: hidden;
+  position: relative;
+}
+.content{
+  width: 88%;
+  padding-left: 3%;
+  padding-top: 20rpx;
+  padding-bottom: 20rpx;
+  line-height: 40rpx;
+  font-size: 13px;
+  font-weight: 500;
+  overflow: hidden;
+}
+.delete{
+  width: 45rpx;
+  height: 45rpx;
+  position: absolute;
+  right: 10rpx;
+  top: 15rpx;
+}
+.content-img{
+  width: 300rpx;
+  height: 200rpx;
+  background-color: white;
+  margin-bottom: 15rpx;
+  margin-left: 20rpx;
+  border-radius: 5rpx;
+}
+.bottom-bar{
+  width: 94%;
+  height: 70rpx;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  padding-left: 2%;
+  border-top: 1rpx dashed rgb(230, 230, 230);
+  border-bottom-left-radius: 8rpx;
+  border-bottom-right-radius: 8rpx;
+  margin-bottom: 15rpx;
+  background-color: white;
+}
+.bottombar-text{
+  width: 40%;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 13px;
+  color: rgb(179, 179, 179);
+  float: left;
+}
+.hasvalue{
+  width: 250rpx;
+  height: 250rpx;
+  margin: 0 auto;
+  margin-top: 200rpx;
+}
+.hasimg{
+  width: 250rpx;
+  height: 250rpx;
+  margin: 0 auto;
+}
+.hastext{
+  width: 100%;
+  height: 70rpx;
+  color: rgb(184, 184, 184);
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 16px;
+}
+.juddelete{
+  width: 120rpx;
+  height: 70rpx;
+  position: fixed;
+  line-height: 70rpx;
+  text-align: center;
+  background-color: rgb(240, 0, 0);
+  /* box-shadow: 0 0 5px 0 red inset; */
+  box-shadow: rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(0,0,0,0.25) 0px 0px 0px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+  border-radius: 15rpx;
+  color: white;
+  bottom: 20px;
+  right: 2%;
+}
+.pageit{
+  width: 100%;
+  height: 80rpx;
+  margin-top: 20rpx;
+  /* background-color: blueviolet; */
+}
+.loadmore{
+  width: 80%;
+  height: 100%;
+  line-height: 80rpx;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: 600;
+  color:  rgb(141, 141, 141);
+}

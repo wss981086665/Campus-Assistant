@@ -1,0 +1,8 @@
+<view>
+  <view wx:if="{{ensure}}">
+    暂未开通
+  </view>
+  <block wx:else>
+    <view></view>
+  </block>
+</view>

@@ -1,0 +1,57 @@
+<view>
+  <view wx:if="{{ensure}}">
+    <view class='selection'>
+      <swiper indicator-dots="false" indicator-active-color="#64B4FF" autoplay="true" interval="8000" duration="1000" circular='true'>
+        <block wx:for="{{imgUrls}}" wx:key="index">
+          <swiper-item>
+            <image src="{{item}}" class="slide-image"/>
+          </swiper-item>
+        </block>
+      </swiper>
+    </view>
+
+    <view class='header'>
+      <text class='header-text'> 功能导航</text>
+    </view>
+
+    <view class='middlea'>
+      <view class='con' bindtap='discussbtn'>
+        <!-- <view class='img discuss'></view> -->
+        <image class='img discuss' src="../../image/discuss.png" mode="cover"></image>
+        <view class='topic discuss-topic'><text>问题\n探讨</text></view>
+      </view>
+      <view class='con' bindtap='articlebtn'>
+        <image class='img discuss' src="../../image/article.png" mode="cover"></image>
+        <view class='topic article-topic'><text>文章\n发表</text></view>
+      </view>
+      <view class='con' bindtap='teacherbtn'>
+        <image class='img discuss' src="../../image/teacher.png" mode="cover"></image>
+        <view class='topic teacher-topic'><text>我是\n老师</text></view>
+      </view>
+      <view class='con' bindtap='proposebtn'>
+        <image class='img discuss' src="../../image/propose.png" mode="cover"></image>
+        <view class='topic propose-topic'><text>提供\n建议</text></view>
+      </view>
+    </view>
+
+    <view class='headera-b'>
+      <text class='header-text'>每日推送</text>
+    </view>
+
+    <view wx:for="{{articles}}" wx:key wx:for-index="index" wx:for-item="item">
+      <view class='article-dis'>
+        <view class='title-dis' bindtap='listarticle' data-id='{{item.id}}'>{{item.title}}</view>
+        <image class='image-dis' bindtap='previewImage' src="https://www.xztywss.top/img/upload/{{item.fac1}}" mode="aspectFill" data-src='https://www.xztywss.top/img/upload/{{item.fac1}}'></image>
+        <scroll-view class='content-dis' bindtap='listarticle' data-id='{{item.id}}'>{{item.content}}</scroll-view>
+      </view>
+    </view>
+
+  </view>
+  <block wx:else>
+    <view wx:for="{{imageurl}}" wx:key wx:for-index="index" wx:for-item="item">
+      <view class='hide-tip'>水墨画儿</view>
+      <view class='hide-con'>水墨画：由水和墨经过调配水和墨的浓度所画出的画，是绘画的一种形式，更多时候，水墨画被视为中国传统绘画，也就是国画的代表</view>
+      <view class='hide-image' style="background:url('{{item}}') -20px -20px;background-size: 120% 480rpx;"></view>
+    </view>
+  </block>
+</view>

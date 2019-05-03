@@ -1,0 +1,21 @@
+<view>
+  <view wx:if="{{ensure}}">
+    <view class='container'>
+      <view class='tip'>请输入信息</view>
+      <!-- <view class='frame'><input class='input school' placeholder='请输入学校'></input></view>
+      <view class='frame'><input class='input institute' placeholder='请输入院系'></input></view>
+      <view class='frame'><input class='input profession' placeholder='请输入专业'></input></view>
+      <view class='frame'> <input class='input profession' placeholder='请输入专业'></input></view> -->
+      <input class='input school' placeholder='请输入学校(非必填)' bindinput='schoolinput'></input>
+      <input class='input institute' placeholder='请输入院系' bindinput='instituteinput'></input>
+      <input class='input profession' placeholder='请输入专业' bindinput='professioninput'></input>
+      <input class='input course' placeholder='请输入课程' bindinput='courseinput'></input>
+      <input class='input name' placeholder='请输入姓名' bindinput='nameinput'></input>
+      <input class='input tell' placeholder='手机号或者邮箱' bindinput='tellinput'></input>
+      <view  class='submit' style='background-color: rgba(255, 136, 0,{{index}});' bindtap='hello'>提交申请</view>
+    </view>
+  </view>
+  <block wx:else>
+    <view></view>
+  </block>
+</view>

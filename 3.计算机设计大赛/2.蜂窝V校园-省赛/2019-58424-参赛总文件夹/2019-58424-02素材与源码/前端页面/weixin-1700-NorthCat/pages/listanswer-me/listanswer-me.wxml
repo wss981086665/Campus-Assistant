@@ -1,0 +1,28 @@
+<view>
+<view wx:if="{{ensure}}">
+  <view wx:for="{{myanswerlist}}" wx:key wx:for-index="index" wx:for-item="item">
+    <view class='textarea'>
+      <view class='content' bindtap='toquestion' data-questionid='{{item.questionid}}'>{{item.answercontent}}</view>
+      <image src='../../image/delete.png' class='delete' bindtap='delete' data-ids='{{item.ids}}' hidden='{{judgedelete}}'></image>
+      <image class='content-img' data-demo="https://www.xztywss.top/img/upload/{{item.element5}}" src="https://www.xztywss.top/img/upload/{{item.element5}}" hidden="{{item.element5 == 'defaultimg.jpg'}}" bindtap='showcommentimg' mode='aspectFill'></image>
+    </view>
+    <view class='bottom-bar' bindtap='toquestion'>
+      <view class='bottombar-text'>{{item.element4}}</view>
+    </view>
+  </view>
+  <view hidden='{{hasvalue}}'>
+    <view class='hasvalue'>
+      <image class='hasimg' src="../../image/pure.png" mode="cover"></image>
+    </view>
+    <view class='hastext'>什么东西也没有</view>
+  </view>
+  <view class='pageit' hidden='{{hiddenpage}}'>
+    <view class='loadmore' bindtap='loadmore'>--点击加载更多--</view>
+  </view>
+  <view class='juddelete' bindtap='condelete' hidden='{{!judgedelete || rejudge}}'>删除</view>
+  <view class='juddelete' bindtap='nodelete' hidden='{{judgedelete || rejudge}}'>取消</view>
+</view>
+  <block wx:else>
+    <view></view>
+  </block>
+</view>

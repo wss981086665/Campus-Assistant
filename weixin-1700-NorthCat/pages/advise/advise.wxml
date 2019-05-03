@@ -1,0 +1,10 @@
+<view>
+  <view wx:if="{{ensure}}">
+    <view wx:for="{{advise}}" wx:key wx:for-index="index" wx:for-item="item">
+      <i-cell i-class='list' title="{{item.cou}}" is-link url="../advise-detail/advise-detail?cou={{item.cou}}"></i-cell>
+    </view>
+  </view>
+  <block wx:else>
+    <view></view>
+  </block>
+</view>

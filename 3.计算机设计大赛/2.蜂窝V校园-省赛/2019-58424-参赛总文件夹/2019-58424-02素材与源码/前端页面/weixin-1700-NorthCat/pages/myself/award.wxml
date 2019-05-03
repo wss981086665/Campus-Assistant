@@ -1,0 +1,6 @@
+<view>
+  <view class='photoa'>
+    <image class='photo' src='../../image/hongbao.jpg' mode='cover' bindtap="previewImage"></image>
+  </view>
+  <view class='text'>感谢您的支持哦^_^</view>
+</view>

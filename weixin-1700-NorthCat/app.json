@@ -1,0 +1,58 @@
+{
+  "pages": [
+    "pages/index/index",
+    "pages/logs/logs",
+    "pages/category/category",
+    "pages/myself/myself",
+    "pages/myself/declare",
+    "pages/question/question",
+    "pages/answer/answer",
+    "pages/listquestion/listquestion",
+    "pages/listanswer/listanswer",
+    "pages/homepage/homepage",
+    "pages/article/article",
+    "pages/category-course/category-course",
+    "pages/article-detail/article-detail",
+    "pages/article-share/article-share",
+    "pages/listanswer-me/listanswer-me",
+    "pages/listarticle-me/listarticle-me",
+    "pages/listarticle-display/listarticle-display",
+    "pages/listarticle-author/listarticle-author",
+    "pages/advise/advise",
+    "pages/advise-detail/advise-detail",
+    "pages/apply-teacher/apply-teacher",
+    "pages/apply-teacher-look/apply-teacher-look"
+  ],
+  "window": {
+    "backgroundTextStyle": "light",
+    "navigationBarBackgroundColor": "#ffffff",
+    "navigationBarTitleText": "蜂窝V校园",
+    "navigationBarTextStyle": "black",
+    "backgroundColor": "#64B4FF"
+  },
+  "tabBar": {
+    "selectedColor": "#64B4FF",
+    "color": "#8D8D8D",
+    "list": [
+      {
+        "pagePath": "pages/index/index",
+        "text": "主页",
+        "iconPath": "image/主页.png",
+        "selectedIconPath": "image/in主页.png"
+      },
+      {
+        "pagePath": "pages/category/category",
+        "text": "分类",
+        "iconPath": "image/分类.png",
+        "selectedIconPath": "image/in分类.png"
+      },
+      {
+        "pagePath": "pages/myself/myself",
+        "text": "我的",
+        "iconPath": "image/我的.png",
+        "selectedIconPath": "image/in我.png"
+      }
+    ]
+  },
+  "sitemapLocation": "sitemap.json"
+}

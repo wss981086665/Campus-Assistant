@@ -1,0 +1,148 @@
+page{
+ background-color: #F0F0F0;
+}
+.blank{
+  width: 100%;
+  height: 25rpx;
+}
+.container{
+  width: 96%;
+  margin: 0 auto;
+  margin-top: 15rpx;
+  background-color: yellow;
+  /* box-shadow: 0 0 3px 0 rgb(200, 200, 200); */
+  border-radius: 8rpx;
+  overflow: hidden;
+}
+.textraea{
+  width: 97%;
+  height: 100%;
+  padding-left: 3%;
+  margin: 0 auto;
+  position: relative;
+  background-color:white;
+  overflow: hidden;
+  border-top-left-radius: 8rpx;
+  border-top-right-radius: 8rpx;
+}
+.topic-container{
+  width: 85%;
+  margin-top: 2%;
+  margin-left: 5rpx;
+  height: 100rpx;
+  display: flex;
+  flex-direction: row;
+}
+.topic-img{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+  background:url("http://www.xztywss.top/img/aliIcon/user.png");
+  background-size: 100rpx 100rpx;
+}
+.topic-i{
+  width: 100rpx;
+  height: 100rpx;
+  border-radius: 50%;
+}
+.topic{
+  width: 60%;
+  line-height: 35rpx;
+  font-size: 14px;
+  margin-top: 20rpx;
+  margin-left: 20rpx;
+  color: rgb(39, 39, 39);
+  font-weight: 700;
+}
+.text-img-a{
+  font-weight: 300;
+  font-size: 13px;
+  color: orangered;
+}
+.text2{
+  color: rgb(85, 85, 85);
+  font-size: 10px;
+  font-weight: 100;
+}
+.answerid{
+  display: none;
+}
+.content{
+  width: 94%;
+  font-size: 13px;
+  line-height: 15px;
+  margin-top: 30rpx;
+  font-weight: 500;
+  margin-bottom: 30rpx;
+  overflow: hidden;
+  color: black;
+}
+.bottom-bar{
+  width: 98%;
+  height: 70rpx;
+  margin: 0 auto;
+  display: flex;
+  flex-direction: row;
+  padding-left: 2%;
+  border-top: 1rpx dashed rgb(230, 230, 230);
+  /* border-bottom: 15rpx solid rgb(228, 228, 228); */
+  border-bottom-left-radius: 8rpx;
+  border-bottom-right-radius: 8rpx;
+  background-color: white;
+}
+.bottombar-text{
+  width: 40%;
+  height: 70rpx;
+  line-height: 70rpx;
+  font-size: 13px;
+  color: rgb(179, 179, 179);
+  float: left;
+}
+.comment-img{
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 15rpx;
+  background-repeat: no-repeat;
+  margin-left: 33%;
+}
+.share-img{
+  width: 40rpx;
+  height: 40rpx;
+  margin-top: 15rpx;
+  background-repeat: no-repeat;
+  margin-left: 7%;
+}
+.hasvalue{
+  width: 250rpx;
+  height: 250rpx;
+  margin: 0 auto;
+  margin-top: 200rpx;
+}
+.hasimg{
+  width: 250rpx;
+  height: 250rpx;
+  margin: 0 auto;
+}
+.hastext{
+  width: 100%;
+  height: 70rpx;
+  color: rgb(184, 184, 184);
+  text-align: center;
+  line-height: 70rpx;
+  font-size: 16px;
+}
+.pageit{
+  width: 100%;
+  height: 80rpx;
+  margin-top: 20rpx;
+  /* background-color: blueviolet; */
+}
+.loadmore{
+  width: 80%;
+  height: 100%;
+  line-height: 80rpx;
+  text-align: center;
+  margin: 0 auto;
+  font-weight: 600;
+  color:  rgb(141, 141, 141);
+}

@@ -1,0 +1,10 @@
+<view>
+<view wx:if="{{ensure}}">
+  <!-- <view class='preserve'><image class='image' src='../../image/preserve.png'></image></view> -->
+  <!-- <view class='glance'><image class='image' src='../../image/glance.png'></image></view> -->
+  <canvas class='canvas' canvas-id="shareCanvas" bindtap='showmenu'></canvas>
+</view>
+<block wx:else>
+  <view></view>
+</block>
+</view>

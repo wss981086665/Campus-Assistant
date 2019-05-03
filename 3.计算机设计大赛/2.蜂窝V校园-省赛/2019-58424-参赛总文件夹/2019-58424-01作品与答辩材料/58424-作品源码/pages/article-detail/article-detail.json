@@ -1,0 +1,14 @@
+{
+  "usingComponents": {
+    "i-card": "../../dist/card/index",
+    "i-collapse": "../../dist/collapse/index",
+    "i-collapse-item": "../../dist/collapse-item/index",
+    "i-grid": "../../dist/grid/index",
+    "i-grid-item": "../../dist/grid-item/index",
+    "i-grid-icon": "../../dist/grid-icon/index",
+    "i-grid-label": "../../dist/grid-label/index"
+  },
+  "navigationBarTitleText": "文章详情",
+  "navigationBarBackgroundColor": "#64B4FF",
+  "navigationBarTextStyle": "white"
+}

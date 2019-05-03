@@ -1,0 +1,18 @@
+<view>
+  <view wx:if="{{ensure}}">
+    <view class='container'>
+      <view class='tip'>{{cou}}</view>
+      <textarea class='content' maxlength='200' bindinput='contentinput' placeholder='请详细描述您的问题或建议,以便我们提供更好的服务'></textarea>
+      <view class='content-length'>{{contentlength}}/200</view>
+    </view>
+    <view class='contacttip'>输入有效的联系方式方便我们联系到您(选填)</view>
+    <view class='contact'>
+      <view class='contacttext'>联系方式</view>
+      <input class='contactcontant' bindinput='contactnumber' placeholder='邮箱/手机'></input>
+    </view>
+    <view class='submit' bindtap='submit' data-thetype='{{cou}}'>提交</view>
+  </view>
+  <block wx:else>
+    <view></view>
+  </block>
+</view>

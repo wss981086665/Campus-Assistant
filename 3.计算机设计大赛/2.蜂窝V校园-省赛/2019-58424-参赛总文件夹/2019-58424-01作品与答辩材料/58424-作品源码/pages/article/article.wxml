@@ -1,0 +1,17 @@
+<view>
+<view wx:if="{{ensure}}">
+
+  <view class='container' style="width:100%;height:{{height}}px">
+    <form>
+      <input type='title' class='titletext' placeholder='文章标题' maxlength='10' bindinput='titleinput'></input>
+      <textarea class='contenttext' placeholder='文章内容...' maxlength='280' bindinput='contentinput'></textarea>
+    </form>
+    <view class='wordnum'>{{wordnum}}/280</view>
+    <view class='return' bindtap='returntoindex'>返回</view>
+    <view class='next' bindtap='nextit'>下一步</view>
+  </view>
+</view>
+  <block wx:else>
+    <view></view>
+  </block>
+</view>

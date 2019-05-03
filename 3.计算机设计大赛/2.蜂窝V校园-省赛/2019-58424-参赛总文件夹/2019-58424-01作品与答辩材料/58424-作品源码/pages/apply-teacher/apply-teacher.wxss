@@ -1,0 +1,30 @@
+.container{
+  width: 92%;
+  height: 600rpx;
+  padding-left:2%;
+  margin: 0 auto;
+  margin-top: 20rpx;
+}
+.tip{
+  font-size: 35px;
+  font-weight: 600;
+  color: rgb(44, 44, 44);
+  margin-bottom: 70rpx;
+}
+.input{
+  width: 97%;
+  height: 100rpx;
+  margin-top: 5rpx;
+  line-height: 100rpx;
+  border-bottom: 1rpx solid rgb(224, 224, 224);
+}
+.submit{
+  width: 97%;
+  height: 80rpx;
+  text-align: center;
+  line-height: 80rpx;
+  color: white;
+  border-radius: 5rpx;
+  margin-top: 70rpx;
+  background-color: rgba(255, 136, 0,0.3);
+}
