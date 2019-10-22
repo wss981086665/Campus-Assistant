@@ -4,8 +4,7 @@ const api = require('api.js');
 App({
 
   globalData: {
-    ensure: false,
-    hasUserInfo: false
+         
   },
 
   onLaunch: function () {
@@ -27,46 +26,11 @@ App({
       }
     })
 
-    wx.request({
-      url: api.ip + 'ensure/ensurenumber',
-      method: 'GET',
-      data: {},
-      success: function (res) {
-        var ensure = res.data.ensure;
-        var courses = res.data.courses;
-        var slider = res.data.slider;
-        var coursename = res.data.coursename;
-        if (ensure) {
-          wx.setStorage({
-            key: 'ensure',
-            data: true,
-          })
-          wx.setStorage({
-            key: 'courses',
-            data: courses,
-          })
-          wx.setStorage({
-            key: 'slider',
-            data: slider,
-          })
-          wx.setStorage({
-            key: 'coursename',
-            data: coursename,
-          })
-        }else if(!ensure){
-          wx.setStorage({
-            key: 'ensure',
-            data: false,
-          })
-        }
-      },
-      fail: function(){
-        wx.setStorage({
-          key: 'ensure',
-          data: false,
-        })
-      } 
+    wx.setStorage({
+      key: 'hasUserInfo',
+      data: false,
     })
+
   },
 
   onShow: function () {

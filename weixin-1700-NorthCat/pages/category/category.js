@@ -8,8 +8,8 @@ Page({
   data: {
     course: '',
     ensure: false,            //如果false，正常展示图片
-    imageurl: [
-      'http://www.xztywss.top/img/timg3.jpg'
+    imageurl:[
+      'https://b289.photo.store.qq.com/psb?/V11FQPcG0x3HZl/RSqsGYQ0N06bNA8eWbIVFhrbRAv9y5ZTys8Szeq0j6Q!/b/dCEBAAAAAAAA&bo=qwYABUAQMAwRCfo!&rf=viewer_4'
     ]
   },
   
@@ -20,23 +20,7 @@ Page({
   },
 
   onLoad: function (options) {
-    var that = this;
-    wx.getStorage({
-      key: 'ensure',
-      success: function (res) {
-        that.setData({
-          ensure: res.data
-        })
-        wx.getStorage({
-          key: 'courses',
-          success: function (res) {
-            that.setData({
-              course: res.data
-            })
-          }
-        })
-      }
-    })
+    
   },
 
   /**
@@ -50,7 +34,29 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-   
+    var that = this;
+    wx.request({
+      url: api.ip + 'ensure/ensurenumber',
+      method: 'GET',
+      data: {},
+      success: function (res) {
+        var ensure = res.data.ensure;
+        var courses = res.data.courses;
+        if (ensure == null) {
+          var toastText = '获取数据失败' + res.data.errMsg;
+          wx.showToast({
+            title: toastText,
+            icon: '',
+            duration: 2000 //弹出时间
+          })
+        } else {
+          that.setData({
+            ensure: ensure,
+            course: courses
+          });
+        }
+      }
+    })
   },
 
   /**

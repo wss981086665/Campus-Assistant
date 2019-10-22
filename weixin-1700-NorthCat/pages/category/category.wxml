@@ -8,9 +8,7 @@
   </view>
   <block wx:else>
     <view wx:for="{{imageurl}}" wx:key wx:for-index="index" wx:for-item="item">
-      <view class='hide-tip'>素描画儿</view>
-      <view class='hide-con'>素描的操作定义：使用单一颜色绘画工具而在画面载体上按照一定的绘制原则而有意塑造物体形态的美术活动。速写是素描的一种变式。素描水平是反映绘画者空间造型能力的重要指标之一。</view>
-      <view class='hide-image' style="background:url('{{item}}') -20px -20px;background-size: 120% 480rpx;"></view>
+      <view class='image' style="background:url('{{item}}');background-size: 100% 400rpx;"></view>
     </view>
   </block>
 </view>

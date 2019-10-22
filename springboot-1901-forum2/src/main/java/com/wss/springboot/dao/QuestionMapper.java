@@ -1,8 +1,6 @@
 package com.wss.springboot.dao;
 
-import com.wss.springboot.bean.CoursePage;
 import com.wss.springboot.bean.Question;
-import com.wss.springboot.bean.QuestionPage;
 import org.apache.ibatis.annotations.*;
 import org.springframework.stereotype.Component;
 
@@ -16,7 +14,7 @@ public interface QuestionMapper {
     @Select("SELECT * FROM question WHERE id=#{id}")
     public Question getQuestionById(Integer id);
 
-    @Insert("INSERT INTO question(author,topic,content,factor1,factor2,factor3,factor4,factor5,factor6,factor7,factor8,factor9,factor10) VALUES(#{author},#{topic},#{content},#{factor1},#{factor2},#{factor3},#{factor4},#{factor5},#{factor6},#{factor7},#{factor8},#{factor9},#{factor10})")
+    @Insert("INSERT INTO question(author,topic,content,factor1,factor2,factor3,factor4,factor5) VALUES(#{author},#{topic},#{content},#{factor1},#{factor2},#{factor3},#{factor4},#{factor5})")
     public void insertQuestion(Question question);
 
     @Update("UPDATE question SET author=#{author},topic=#{topic},content=#{content},answer=#{answer} WHERE id=#{id}")
@@ -31,11 +29,11 @@ public interface QuestionMapper {
     @Select("SELECT * FROM question WHERE author=#{author}")
     public List<Question> getQuestionsByAuthor(String author);
 
-    @Select("SELECT * FROM question WHERE factor1=#{factor1} order by factor5 desc limit #{page},10")
-    public List<Question> getQuestionsByOpenid(QuestionPage questionPage);
+    @Select("SELECT * FROM question WHERE factor1=#{factor1}")
+    public List<Question> getQuestionsByOpenid(String factor1);
 
-    @Select("select * from question where find_in_set(#{name},factor3) order by factor5 desc limit #{page},10")
-    public List<Question> getQuestionsByCourse(CoursePage coursePage);
+    @Select("select * from question where find_in_set(#{factor3},factor3)")
+    public List<Question> getQuestionsByCourse(String factor3);
 
     @Select("SELECT * FROM question WHERE topic=#{topic}")
     public Question getQuestionByTopic(String topic);
@@ -45,8 +43,9 @@ public interface QuestionMapper {
     @Select("SELECT * FROM question order by id desc limit 1")
     public Question getLastQuestion();
 
-    @Select("SELECT * FROM question WHERE topic REGEXP #{index} or content REGEXP #{index}")
-    public List<Question> getSearch(String index);
+    //查询所有数据
+    @Select("SELECT * FROM question WHERE id BETWEEN 0 AND 1000")
+    public List<Question> getAll();
 
     //随机获取10条数据数据
     @Select("SELECT * FROM question ORDER BY rand() LIMIT 10;")

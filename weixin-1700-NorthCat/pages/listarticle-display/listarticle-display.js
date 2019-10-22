@@ -17,14 +17,7 @@ Page({
 
   coperate:function(e) {
     var hiddenit = this.data.hiddenit;
-    var article = this.data.article;
-    if(article.wechat == "" && article.qq == "" &&article.sign == "" && article.style=="" && article.school == "" && article.hobby == ""){
-      wx.showToast({
-        title: '没有更多信息',
-        icon: "none",
-        duration: 850
-      })
-    } else if(hiddenit){
+    if(hiddenit){
       this.setData({
         hiddenit: false,
       })
@@ -63,12 +56,24 @@ Page({
         }
       }
     })
-    wx.getStorage({
-      key: 'ensure',
+    wx.request({
+      url: api.ip + 'ensure/ensurenumber',
+      method: 'GET',
+      data: {},
       success: function (res) {
-        that.setData({
-          ensure: res.data
-        })
+        var ensure = res.data.ensure;
+        if (ensure == null) {
+          var toastText = '获取数据失败' + res.data.errMsg;
+          wx.showToast({
+            title: toastText,
+            icon: '',
+            duration: 2000 //弹出时间
+          })
+        } else {
+          that.setData({
+            ensure: ensure,
+          });
+        }
       }
     })
   },

@@ -33,7 +33,7 @@ public class Forumuser {
         this.language = language;
         this.nickName = nickName;
         this.province = province;
-        this.con1 = con1;         //ID
+        this.con1 = con1;
         this.con2 = con2;
         this.con3 = con3;
         this.con4 = con4;

@@ -1,9 +1,5 @@
 {
   "usingComponents": {
     "i-message": "../../dist/message/index"
-  },
-  "navigationBarTitleText": "蜂窝V校园",
-  "navigationBarBackgroundColor": "#64B4FF",
-  "navigationBarTextStyle": "white",
-  "enablePullDownRefresh": true
+  }
 }

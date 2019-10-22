@@ -1,5 +1,5 @@
 {
-  "navigationBarBackgroundColor": "#64B4FF",
+  "navigationBarBackgroundColor": "#E6E6E6",
   "navigationBarTitleText": "问题发布",
-  "navigationBarTextStyle": "white"
+  "navigationBarTextStyle": "black"
 }

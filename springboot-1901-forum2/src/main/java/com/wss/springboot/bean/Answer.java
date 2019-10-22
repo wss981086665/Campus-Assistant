@@ -10,17 +10,13 @@ public class Answer {
     private String element3;
     private String element4;
     private String element5;
-    private String element6;  //即openid
-    private String element7;  //即avatarUrl`
-    private String element8;
-    private String element9;
-    private String element10;
 
     public Answer(){
 
     }
 
-    public Answer(Integer ids, String questionid, String answercontent, String element1, String element2, String element3, String element4, String element5, String element6, String element7, String element8, String element9, String element10) {
+    public Answer(Integer ids, String questionid, String answercontent,String element1,String element2,
+                  String element3,String element4,String element5) {
         this.ids = ids;
         this.questionid = questionid;
         this.answercontent = answercontent;
@@ -29,11 +25,6 @@ public class Answer {
         this.element3 = element3;
         this.element4 = element4;
         this.element5 = element5;
-        this.element6 = element6;
-        this.element7 = element7;
-        this.element8 = element8;
-        this.element9 = element9;
-        this.element10 = element10;
     }
 
     @Override
@@ -47,11 +38,6 @@ public class Answer {
                 ", element3='" + element3 + '\'' +
                 ", element4='" + element4 + '\'' +
                 ", element5='" + element5 + '\'' +
-                ", element6='" + element6 + '\'' +
-                ", element7='" + element7 + '\'' +
-                ", element8='" + element8 + '\'' +
-                ", element9='" + element9 + '\'' +
-                ", element10='" + element10 + '\'' +
                 '}';
     }
 
@@ -117,45 +103,5 @@ public class Answer {
 
     public void setElement5(String element5) {
         this.element5 = element5;
-    }
-
-    public String getElement6() {
-        return element6;
-    }
-
-    public void setElement6(String element6) {
-        this.element6 = element6;
-    }
-
-    public String getElement7() {
-        return element7;
-    }
-
-    public void setElement7(String element7) {
-        this.element7 = element7;
-    }
-
-    public String getElement8() {
-        return element8;
-    }
-
-    public void setElement8(String element8) {
-        this.element8 = element8;
-    }
-
-    public String getElement9() {
-        return element9;
-    }
-
-    public void setElement9(String element9) {
-        this.element9 = element9;
-    }
-
-    public String getElement10() {
-        return element10;
-    }
-
-    public void setElement10(String element10) {
-        this.element10 = element10;
     }
 }

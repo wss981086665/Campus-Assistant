@@ -1,32 +1,19 @@
 page{
- background-color: #F0F0F0;
+  background-color: rgb(241, 241, 241);
 }
 .blank{
   width: 100%;
-  height: 25rpx;
-}
-.container{
-  width: 96%;
-  margin: 0 auto;
-  margin-top: 15rpx;
-  background-color: yellow;
-  /* box-shadow: 0 0 3px 0 rgb(200, 200, 200); */
-  border-radius: 8rpx;
-  overflow: hidden;
 }
 .textraea{
   width: 97%;
   height: 100%;
   padding-left: 3%;
   margin: 0 auto;
-  position: relative;
   background-color:white;
   overflow: hidden;
-  border-top-left-radius: 8rpx;
-  border-top-right-radius: 8rpx;
 }
 .topic-container{
-  width: 85%;
+  width: 94%;
   margin-top: 2%;
   margin-left: 5rpx;
   height: 100rpx;
@@ -54,11 +41,6 @@ page{
   color: rgb(39, 39, 39);
   font-weight: 700;
 }
-.text-img-a{
-  font-weight: 300;
-  font-size: 13px;
-  color: orangered;
-}
 .text2{
   color: rgb(85, 85, 85);
   font-size: 10px;
@@ -84,10 +66,8 @@ page{
   display: flex;
   flex-direction: row;
   padding-left: 2%;
-  border-top: 1rpx dashed rgb(230, 230, 230);
-  /* border-bottom: 15rpx solid rgb(228, 228, 228); */
-  border-bottom-left-radius: 8rpx;
-  border-bottom-right-radius: 8rpx;
+  border-top: 1rpx solid rgb(230, 230, 230);
+  border-bottom: 15rpx solid rgb(228, 228, 228);
   background-color: white;
 }
 .bottombar-text{
@@ -114,14 +94,14 @@ page{
 }
 .hasvalue{
   width: 250rpx;
-  height: 250rpx;
-  margin: 0 auto;
-  margin-top: 200rpx;
+  height: 320rpx;
+  margin: 200rpx auto;
 }
 .hasimg{
   width: 250rpx;
   height: 250rpx;
-  margin: 0 auto;
+  background: url("http://www.xztywss.top/img/luntan/pure.png");
+  background-size: 250rpx 250rpx;
 }
 .hastext{
   width: 100%;
@@ -130,19 +110,4 @@ page{
   text-align: center;
   line-height: 70rpx;
   font-size: 16px;
-}
-.pageit{
-  width: 100%;
-  height: 80rpx;
-  margin-top: 20rpx;
-  /* background-color: blueviolet; */
-}
-.loadmore{
-  width: 80%;
-  height: 100%;
-  line-height: 80rpx;
-  text-align: center;
-  margin: 0 auto;
-  font-weight: 600;
-  color:  rgb(141, 141, 141);
 }

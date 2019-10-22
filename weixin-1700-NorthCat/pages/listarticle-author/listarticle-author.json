@@ -1,8 +1,5 @@
 {
   "usingComponents": {
     "i-card": "../../dist/card/index"
-  },
-  "navigationBarBackgroundColor": "#64B4FF",
-  "navigationBarTextStyle": "white",
-  "navigationBarTitleText": "文章列表"
+  }
 }

@@ -2,26 +2,26 @@
 <view>
 <view wx:if="{{ensure}}">
 
-  <!-- <i-notice-bar icon="systemprompt" loop>
+  <i-notice-bar icon="systemprompt" loop>
     2018年9月21号,蜂窝V校园开始制作，第一次制作小程序,欢迎大家前来体验蜂窝V校园;
-  </i-notice-bar> -->
+  </i-notice-bar>
   
   <view class='seachcontainer'>
     <view class="weui-search-bar">
-      <view class="weui-search-bar__form">
-        <view class="weui-search-bar__box">
-          <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
-          <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
-          <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
-              <icon type="clear" size="14"></icon>
-          </view>
+    <view class="weui-search-bar__form">
+      <view class="weui-search-bar__box">
+        <icon class="weui-icon-search_in-box" type="search" size="14"></icon>
+        <input type="text" class="weui-search-bar__input" placeholder="搜索" value="{{inputVal}}" focus="{{inputShowed}}" bindinput="inputTyping" />
+        <view class="weui-icon-clear" wx:if="{{inputVal.length > 0}}" bindtap="clearInput">
+            <icon type="clear" size="14"></icon>
         </view>
-        <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
-          <icon class="weui-icon-search" type="search" size="14"></icon>
-          <view class="weui-search-bar__text">搜索</view>
-        </label>
       </view>
-      <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
+      <label class="weui-search-bar__label" hidden="{{inputShowed}}" bindtap="showInput">
+        <icon class="weui-icon-search" type="search" size="14"></icon>
+        <view class="weui-search-bar__text">搜索</view>
+      </label>
+    </view>
+    <view class="weui-search-bar__cancel-btn" hidden="{{!inputShowed}}" bindtap="hideInput">取消</view>
   </view>
   <view class='searchin' hidden='{{havevalue}}' bindtap='searchin'>{{inputVal}}</view>
   </view>
@@ -31,30 +31,28 @@
 
     <!--**************************************************敲黑板，用这种传值方法*********************************************************-->
     <view class='textraea'>
-      <view class='topic-container' bindtap='detail' data-id="{{item.id}}" data-topic="{{item.topic}}" data-factor1="{{item.factor1}}" data-factor4="{{item.factor4}}" data-factor2="{{item.factor2}}" data-author="{{item.author}}" data-content="{{item.content}}" data-factor6="{{item.factor6}}">
+      <view' class='topic-container' bindtap='detail' data-id="{{item.id}}" data-topic="{{item.topic}}" data-factor1="{{item.factor1}}" data-factor4="{{item.factor4}}" data-factor2="{{item.factor2}}" data-author="{{item.author}}" data-content="{{item.content}}">
         <view class='topic-img'>
           <image class="topic-i" src="{{item.factor2}}" mode="cover"></image>
         </view>
-        <view name="topic" class='topic'><text>{{item.topic}}</text><text class='text-img-a' hidden="{{item.factor6 == 'defaultimg.jpg'}}">(图)</text><text class='text2'>\n{{item.factor4}}</text></view>
+        <view name="topic" class='topic'><text>{{item.topic}}\n</text><text class='text2'>{{item.factor4}}</text></view>
       </view>
-      <!-- <view class='delete' data-id="{{item.id}}" bindtap='deleteit' hidden='{{!hasadministor}}'><image src='../../image/delete3.png' style='width:100%;height:100%'></image></view> -->
-      <view name="content" bindtap='detail' class='content' data-id="{{item.id}}" data-topic="{{item.topic}}" data-factor1="{{item.factor1}}" data-factor4="{{item.factor4}}" data-factor2="{{item.factor2}}" data-author="{{item.author}}" data-content="{{item.content}}" data-factor6="{{item.factor6}}">{{item.content}}</view>
+      <view class='delete' data-id="{{item.id}}" bindtap='deleteit' hidden='{{!hasadministor}}'><image src='../../image/delete3.png' style='width:100%;height:100%'></image></view>
+      <view name="content" bindtap='detail' class='content' data-id="{{item.id}}" data-topic="{{item.topic}}" data-factor1="{{item.factor1}}" data-factor4="{{item.factor4}}" data-factor2="{{item.factor2}}" data-author="{{item.author}}" data-content="{{item.content}}">{{item.content}}</view>
     </view>
 
     <view class="bottom-bar">
       <view class='bottombar-text'>{{item.factor5}}</view>
-      <view class='comment-img' bindtap='detail' data-id="{{item.id}}" data-topic="{{item.topic}}" data-factor1="{{item.factor1}}" data-factor4="{{item.factor4}}" data-factor2="{{item.factor2}}" data-author="{{item.author}}" data-content="{{item.content}}" data-factor6="{{item.factor6}}"><image src='../../image/commenticon.png' style='width:100%;height:100%'></image></view>
-      <view class='share-img' bindtap='detail' data-id="{{item.id}}" data-topic="{{item.topic}}" data-factor1="{{item.factor1}}" data-factor4="{{item.factor4}}" data-factor2="{{item.factor2}}" data-author="{{item.author}}" data-content="{{item.content}}" data-factor6="{{item.factor6}}"><image src='../../image/share.png' style='width:100%;height:100%'></image></view>
+      <view class='comment-img' bindtap='detail' data-id="{{item.id}}" data-topic="{{item.topic}}" data-factor1="{{item.factor1}}" data-factor4="{{item.factor4}}" data-factor2="{{item.factor2}}" data-author="{{item.author}}" data-content="{{item.content}}"><image src='../../image/commenticon.png' style='width:100%;height:100%'></image></view>
+      <view class='share-img' bindtap='detail2' data-id="{{item.id}}" data-topic="{{item.topic}}" data-author="{{item.author}}" data-content="{{item.content}}"><image src='../../image/share.png' style='width:100%;height:100%'></image></view>
     </view>
   </view>
   <!-- </scroll-view> -->
-  <!-- <view class='blank'></view> -->
+  <view class='blank'></view>
 
-  <view class='askquestion' bindtap='askquestion'>
-   <image class='askimgs' src="../../image/add.png" mode="cover"></image>
-  </view>
+  <view class='askquestion' bindtap='askquestion'></view>
   <view hidden='{{hasvalue}}' class='hasvalue'>
-    <image class='hasimg' src="../../image/pure.png" mode="cover"></image>
+    <view class='hasimg'></view>
     <view class='hastext'>什么东西也没有</view>
   </view>
 </view>

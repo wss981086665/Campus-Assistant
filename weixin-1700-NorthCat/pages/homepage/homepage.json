@@ -4,7 +4,5 @@
   "usingComponents": {
     "i-notice-bar": "../../dist/notice-bar/index"
   },
-  "navigationBarTitleText": "问题",
-  "navigationBarBackgroundColor": "#64B4FF",
-  "navigationBarTextStyle": "white"
+  "navigationBarTitleText": "问题"
 }

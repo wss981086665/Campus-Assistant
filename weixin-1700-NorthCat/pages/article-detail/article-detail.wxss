@@ -1,43 +1,12 @@
-@keyframes showbtn{
-    from {
-        height: 0;
-    }
-    to {
-       height: 406rpx;
-    }
-} 
-page{
-  overflow: hidden;
-}
-.blank{
-  width: 100%;
-  height: 15rpx;
-}
-.showdemo{
-  width: 100%;
-  height: 72rpx;
-  margin-top: 20rpx;
-}
 .showelement{
-  width: 32%;
+  width: 30%;
   height: 70rpx;
   line-height: 70rpx;
   text-align: center;
-  margin-left: 12%;
-  color: white;
-  float: left;
-  border-radius: 10rpx;
-  background-color: #64B4FF;
-}
-.showelement2{
-  width: 32%;
-  height: 70rpx;
-  line-height: 70rpx;
-  text-align: center;
+  margin: 20rpx auto;
   color: white;
   border-radius: 10rpx;
-  margin: 0 auto;
-  background-color: #64B4FF;
+  background-color: rgb(0, 165, 0);
 }
 .container{
   width: 100%;
@@ -77,82 +46,45 @@ page{
   word-break: break-all;
   overflow: hidden;
 }
-.q-image-wrap{
-  width: 90%;
-  height: 360rpx;
-  border-radius: 10rpx;
-  float: left;
-  overflow: hidden;
-  position: relative;
-  margin-left: 5%;
-  margin-top: 20rpx;
-  z-index: 1;
-}
-.q-image{
-  width: 100%;
-  height: 400rpx;
-}
-.q-image-remover{
-  position: absolute;
-  right: 10rpx;
-  top: 10rpx;
-  color: red;
-}
 .grid{
-  width: 100%;
-  height: 406rpx;
   position: fixed;
-  bottom: 85rpx;
-  z-index: 3;
-  animation: showbtn 500ms;
-}
-.grid-top{
-  width: 98%;
-  height: 100%;
-  margin:  0 auto;
+  width: 96%;
+  height: 470rpx;
+  left: 3%;
+  bottom: 0;
+  z-index: 2;
 }
 .info{
-  width: 33.3333%;
-  height: 200rpx;
-  /* border: 1rpx solid rgb(230, 230, 230); */
-  box-shadow: 0 0 3px 0 gray;
-  background-color: white;
+  width: 32%;
+  height: 148rpx;
+  border: 1rpx solid rgb(177, 177, 177);
+  padding-top: 40rpx;
   float: left;
-  position: relative;
+  background-color: rgb(218, 218, 218);
 }
- .info-image{
-  width: 36%;
-  height: 85rpx;
-  left: 32%;
-  top: 40rpx;
-  background-color: yellow;
-  position: absolute;
+.info-image{
+  width: 50%;
+  height: 110rpx;
+  margin: 0 auto;
 }
 .info-text{
   width: 100%;
-  height: 60rpx;
-  font-size: 14px;
+  height: 50rpx;
+  font-size: 12px;
   text-align: center;
-  line-height: 60rpx;
-  bottom: 15rpx;
-  position: absolute;
+  line-height: 50rpx;
 }
 .cancel{
-  width: 98%;
-  height: 75rpx;
-  line-height: 75rpx;
+  width: 94%;
+  height: 79rpx;
+  line-height: 79rpx;
   text-align: center;
   font-size: 18px;
   font-weight: 600;
   position: fixed;
-  bottom: 15rpx;
-  left: 1%;
-  margin-top: 10rpx;
-  color: rgb(112, 112, 112);
-  border-bottom-left-radius: 15rpx;
-  border-bottom-right-radius: 15rpx;
-  background-color: rgb(255, 255, 255);
-  box-shadow: 0 0 3px 0 rgb(184, 184, 184);
+  bottom: 0;
+  border-top: 1rpx solid rgb(177, 177, 177);
+  background-color: rgb(218, 218, 218);
 }
 .image{
   width: 96%;
@@ -169,6 +101,7 @@ page{
   left: 550rpx;
   color: rgb(68, 68, 68);
   text-align: center;
-  z-index: 2;
+  z-index: 3;
+  animation: showbtn 2s;
   border-radius: 50%;
 }

@@ -6,14 +6,14 @@ page{
 }
 .hasvalue{
   width: 250rpx;
-  height: 250rpx;
-  margin: 0 auto;
-  margin-top: 200rpx;
+  height: 320rpx;
+  margin: 200rpx auto;
 }
 .hasimg{
   width: 250rpx;
   height: 250rpx;
-  margin: 0 auto;
+  background: url("http://www.xztywss.top/img/luntan/pure.png");
+  background-size: 250rpx 250rpx;
 }
 .hastext{
   width: 100%;
@@ -22,52 +22,4 @@ page{
   text-align: center;
   line-height: 70rpx;
   font-size: 16px;
-}
-
-
-
-
-.article-dis{
-  width: 90%;
-  height: 275rpx;
-  margin: 0 auto;
-  margin-top: 15rpx;
-  border-radius: 8rpx;
-  overflow: hidden;
-  /* background-color: rgba(76, 138, 189,1); */
-  background-color: white;
-  border: 1px solid rgb(196, 196, 196);
-  box-shadow: 5rpx 5rpx 5rpx rgb(199, 199, 199);
-  position: relative;
-}
-.title-dis{
-  height: 70rpx;
-  width: 95%;
-  margin: 0 auto;
-  line-height: 70rpx;
-  font-size: 18px;
-  font-weight: 700;
-  border-bottom: 1px dashed rgb(167, 167, 167);
-  color: rgb(61, 61, 61);
-}
-.image-dis{
-  width: 40%;
-  height: 65%;
-  margin-top: 13rpx;
-  margin-left: 15rpx;
-  border-radius: 8rpx;
-  float: left;
-}
-.content-dis{
-  width: 53%;
-  height: 65%;
-  margin-top: 8rpx;
-  margin-left: 15rpx;
-  font-size: 15px;
-  color: rgb(58, 58, 58);
-  float: left;
-}
-.blank{
-  width: 100%;
-  height: 15rpx;
 }

@@ -1,8 +1,6 @@
 package com.wss.springboot.service;
 
-import com.wss.springboot.bean.CoursePage;
 import com.wss.springboot.bean.Question;
-import com.wss.springboot.bean.QuestionPage;
 import com.wss.springboot.dao.QuestionMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -47,14 +45,15 @@ public class QuestionService {
         return queryQuestion;
     }
 
-    public List<Question> getQuestionsByOpenid(QuestionPage questionPage){
+    public List<Question> getQuestionsByOpenid(String factor1){
         List<Question> queryQuestion = new LinkedList<Question>();
-        queryQuestion = questionMapper.getQuestionsByOpenid(questionPage);
+        queryQuestion = questionMapper.getQuestionsByOpenid(factor1);
         return queryQuestion;
     }
 
-    public List<Question> getQuestionsByCourse(CoursePage coursePage){
-        List<Question> queryQuestion = questionMapper.getQuestionsByCourse(coursePage);
+    public List<Question> getQuestionsByCourse(String factor3){
+        List<Question> queryQuestion = new LinkedList<Question>();
+        queryQuestion = questionMapper.getQuestionsByCourse(factor3);
         return queryQuestion;
     }
 
@@ -70,8 +69,9 @@ public class QuestionService {
         return lastQuestionId;
     }
 
-    public List<Question> getSearch(String index){
-        List<Question> allquestion = questionMapper.getSearch(index);
+    //查询所有数据
+    public List<Question> getAll(){
+        List<Question> allquestion = questionMapper.getAll();
         return allquestion;
     }
 

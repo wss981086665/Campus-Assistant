@@ -1,32 +1,27 @@
 /**index.wxss**/
-page{
-  background-color: #F0F0F0;
-}
 .seachcontainer{
-  /* position: relative; */
-  margin-bottom: 15rpx;
+  position: relative;
 }
 .searchin{
   position: absolute;
-  width: 97%;
-  height: 80rpx;
-  padding-left: 3%;
-  line-height: 80rpx;
-  color: rgb(49, 49, 49);
+  width: 88%;
+  height: 70rpx;
+  padding-left: 2%;
+  line-height: 70rpx;
+  left: 38rpx;
+  border-radius: 10rpx;
+  color: white;
   z-index: 2;
-  border-bottom: 1px solid rgba(128, 128, 128, 0.363);
-  background-color: white;
+  background-color: rgba(135, 206, 235,0.9);
 }
 .textraea{
-  width: 93%;
+  width: 97%;
   height: 100%;
   padding-left: 3%;
   margin: 0 auto;
   position: relative;
   background-color:white;
   overflow: hidden;
-  border-top-left-radius: 8rpx;
-  border-top-right-radius: 8rpx;
 }
 .topic-container{
   width: 85%;
@@ -57,18 +52,13 @@ page{
   border-radius: 50%;
 }
 .topic{
-  width: 70%;
+  width: 60%;
   line-height: 35rpx;
   font-size: 14px;
   margin-top: 20rpx;
   margin-left: 20rpx;
   color: rgb(39, 39, 39);
   font-weight: 700;
-}
-.text-img-a{
-  font-weight: 300;
-  font-size: 13px;
-  color: orangered;
 }
 .text2{
   color: rgb(85, 85, 85);
@@ -90,17 +80,14 @@ page{
   color: rgb(34, 34, 34);
 }
 .bottom-bar{
-  width: 94%;
+  width: 98%;
   height: 70rpx;
   margin: 0 auto;
   display: flex;
   flex-direction: row;
   padding-left: 2%;
-  border-top: 1rpx dashed rgb(230, 230, 230);
-  /* border-bottom: 15rpx solid rgb(228, 228, 228); */
-  border-bottom-left-radius: 8rpx;
-  border-bottom-right-radius: 8rpx;
-  margin-bottom: 15rpx;
+  border-top: 1rpx solid rgb(230, 230, 230);
+  border-bottom: 15rpx solid rgb(228, 228, 228);
   background-color: white;
 }
 .bottombar-text{
@@ -131,25 +118,18 @@ page{
   height: 125rpx;
   line-height: 75rpx;
   bottom: 50rpx;
-  right: 35rpx;
+  left: 580rpx;
   border-radius: 50%;
-  overflow: hidden;
-  background-color: white;
-  box-shadow: 0 0 10px 0 gray;
-}
-.askimgs{
-  width: 120%;
-  height: 120%;
-  border-radius: 50%;
-  margin-top: -10%;
-  margin-left: -10%;
+  background: url("http://www.xztywss.top/img/luntan/add.png") 20rpx 20rpx;
+  background-size: 80% 80%;
+  background-repeat: no-repeat;
 }
 .blank{
   width: 100%;
   background-color: rgb(228, 228, 228);
   height: 10rpx;
 }
-.weui-search-bar{position:relative;padding:8px 10px;display:-webkit-box;display:-webkit-flex;display:flex;box-sizing:border-box;background-color:#64B4FF;}.weui-icon-search{margin-right:8px;font-size:inherit}.weui-icon-search_in-box{position:absolute;left:10px;top:7px}.weui-search-bar__text{display:inline-block;font-size:14px;vertical-align:middle}.weui-search-bar__form{position:relative;-webkit-box-flex:1;-webkit-flex:auto;flex:auto;border-radius:5px;background:#fff;border:1rpx solid #e6e6ea}.weui-search-bar__box{position:relative;padding-left:30px;padding-right:30px;width:100%;box-sizing:border-box;z-index:1}.weui-search-bar__input{height:28px;line-height:28px;font-size:14px}.weui-icon-clear{position:absolute;top:0;right:0;padding:7px 8px;font-size:0}.weui-search-bar__label{position:absolute;top:0;right:0;bottom:0;left:0;z-index:2;border-radius:3px;text-align:center;color:#9b9b9b;background:#fff;line-height:28px}.weui-search-bar__cancel-btn{margin-left:10px;line-height:28px;color:white;white-space:nowrap}
+.weui-search-bar{position:relative;padding:8px 10px;display:-webkit-box;display:-webkit-flex;display:flex;box-sizing:border-box;background-color:#efeff4;border-top:1rpx solid #d7d6dc;}.weui-icon-search{margin-right:8px;font-size:inherit}.weui-icon-search_in-box{position:absolute;left:10px;top:7px}.weui-search-bar__text{display:inline-block;font-size:14px;vertical-align:middle}.weui-search-bar__form{position:relative;-webkit-box-flex:1;-webkit-flex:auto;flex:auto;border-radius:5px;background:#fff;border:1rpx solid #e6e6ea}.weui-search-bar__box{position:relative;padding-left:30px;padding-right:30px;width:100%;box-sizing:border-box;z-index:1}.weui-search-bar__input{height:28px;line-height:28px;font-size:14px}.weui-icon-clear{position:absolute;top:0;right:0;padding:7px 8px;font-size:0}.weui-search-bar__label{position:absolute;top:0;right:0;bottom:0;left:0;z-index:2;border-radius:3px;text-align:center;color:#9b9b9b;background:#fff;line-height:28px}.weui-search-bar__cancel-btn{margin-left:10px;line-height:28px;color:#09bb07;white-space:nowrap}
 
 .image{
   width: 96%;
@@ -166,6 +146,8 @@ page{
 .hasimg{
   width: 250rpx;
   height: 250rpx;
+  background: url("http://www.xztywss.top/img/luntan/pure.png");
+  background-size: 250rpx 250rpx;
 }
 .hastext{
   width: 100%;

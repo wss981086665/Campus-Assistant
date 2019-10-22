@@ -8,11 +8,11 @@ Page({
     hasvalue: true,
     ensure: false, 
     imageurl: [
-      
+      'https://b168.photo.store.qq.com/psb?/V11FQPcG0x3HZl/vLQ8ydlFPAYH3v5hcf1X.ZcxEs1c3ZQlXedIDhDRyp4!/b/dKgAAAAAAAAA&bo=4wgABeMIAAURBzA!&rf=viewer_4',
+      'https://b289.photo.store.qq.com/psb?/V11FQPcG0x3HZl/Z.loEautTFlheoAjR.j2LnrKEln9Tn7RWP0jm1x1fuQ!/b/dCEBAAAAAAAA&bo=gAxABqAP0AcRCYw!&rf=viewer_4',
+      'https://b290.photo.store.qq.com/psb?/V11FQPcG0x3HZl/fDJLAhypbErsHDA2C9NpmXbnI3glg1KvRc09WKhr.dQ!/b/dCIBAAAAAAAA&bo=gAegBYAHoAURCT4!&rf=viewer_4',
+      'https://b289.photo.store.qq.com/psb?/V11FQPcG0x3HZl/RSqsGYQ0N06bNA8eWbIVFhrbRAv9y5ZTys8Szeq0j6Q!/b/dCEBAAAAAAAA&bo=qwYABUAQMAwRCfo!&rf=viewer_4'
     ],
-    questionimg: '',
-    page: 0,
-    hiddenpage: true
   },
 
   detail: function (e) {
@@ -23,13 +23,12 @@ Page({
     var openid = e.currentTarget.dataset.factor1;
     var avatarUrl = e.currentTarget.dataset.factor2;
     var content = e.currentTarget.dataset.content;
-    var questionimg = e.currentTarget.dataset.factor6;
     wx.getStorage({
       key: 'hasUserInfo',
       success: function (res) {
         if (res.data == true) {
           wx.navigateTo({
-            url: '../answer/answer?topic=' + topic + '&author=' + author + '&content=' + content + '&openid=' + openid + '&nickName=' + nickName + '&avatarUrl=' + avatarUrl + '&id=' + id + '&questionimg=' + questionimg,
+            url: '../answer/answer?topic=' + topic + '&author=' + author + '&content=' + content + '&openid=' + openid + '&nickName=' + nickName + '&avatarUrl=' + avatarUrl + '&id=' + id,
           });
         } else {
           wx.showModal({
@@ -50,60 +49,25 @@ Page({
     })
   },
 
-  loadmore: function(){
-    wx.showLoading({
-      title: '正在加载',
-    })
-    var name = this.data.name;
-    var that = this;
-    var page = that.data.page + 1;
-    wx.request({
-      url: api.ip + 'superadmin/getquestionsbycourse?name=' + name + '&page=' + page * 10,
-      method: 'GET',
-      data: {},
-      success: function (res) {
-        var iquestions = res.data.questionlist;
-        if (iquestions == null) {
-          var toastText = '获取数据失败' + res.data.errMsg;
-          wx.showToast({
-            title: toastText,
-            icon: '',
-            duration: 2000 //弹出时间
-          })
-        } else {
-          if (iquestions.length == 0) {
-            wx.showToast({
-              title: '没有更多内容',
-              icon: 'none',
-              duration: 850
-            })
-          } else {
-            var theques = that.data.questions;
-            that.setData({
-              questions: theques.concat(iquestions),
-              page: page
-            });
-            wx.showToast({
-              title: '加载成功',
-              duration: 850
-            })
-          }
-        }
-      }
+  detail2: function () {
+    wx.showToast({
+      title: '暂未开放',
     })
   },
 
   onLoad: function (options) {
+    this.setData({
+      name: options.name
+    })
     wx.showLoading({
       title: '正在加载',
     })
-    var name = options.name;
+    var name = this.data.name;
     name = encodeURIComponent(name);
     name = encodeURIComponent(name);//二次编码
     var that = this;
-    var page = that.data.page;
     wx.request({
-      url: api.ip + 'superadmin/getquestionsbycourse?name=' + name + '&page=' + page * 10,
+      url: api.ip + 'superadmin/getquestionsbycourse?name=' + name,
       method: 'GET',
       data: {},
       success: function (res) {
@@ -123,13 +87,7 @@ Page({
           }else{
             that.setData({
               questions: questions,
-              name: name
             });
-            if(questions.length == 10){
-              that.setData({
-                hiddenpage: false
-              })
-            }
           }
           wx.hideLoading();
         }
@@ -143,12 +101,24 @@ Page({
 
   onShow: function () {
     var that = this;
-    wx.getStorage({
-      key: 'ensure',
+    wx.request({
+      url: api.ip + 'ensure/ensurenumber',
+      method: 'GET',
+      data: {},
       success: function (res) {
-        that.setData({
-          ensure: res.data
-        })
+        var ensure = res.data.ensure;
+        if (ensure == null) {
+          var toastText = '获取数据失败' + res.data.errMsg;
+          wx.showToast({
+            title: toastText,
+            icon: '',
+            duration: 2000 //弹出时间
+          })
+        } else {
+          that.setData({
+            ensure: ensure,
+          });
+        }
       }
     })
   },

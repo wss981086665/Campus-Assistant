@@ -8,7 +8,5 @@
     "i-grid-icon": "../../dist/grid-icon/index",
     "i-grid-label": "../../dist/grid-label/index"
   },
-  "navigationBarTitleText": "文章详情",
-  "navigationBarBackgroundColor": "#64B4FF",
-  "navigationBarTextStyle": "white"
+  "navigationBarTitleText": "文章"
 }

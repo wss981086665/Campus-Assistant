@@ -11,7 +11,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
-import java.util.*;
+import java.util.HashMap;
+import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("operateuser")
@@ -24,32 +26,17 @@ public class ForumuserController {
     public Map<String,Object> getForumuser(@RequestParam(value="openid",defaultValue = "null") String openid){
         Map<String,Object> forumusernum= new HashMap<String,Object>();
         List<Forumuser> forumuser = forumuserService.getForumuser(openid);
-        String num = String.valueOf(forumuser.size());
-        forumusernum.put("forumusernum",num);
+        String num = ((Integer) forumuser.size()).toString();
+        forumusernum.put("forumuser",num);
         return forumusernum;
     }
 
-    @RequestMapping(value = "/inserforumuser",method = RequestMethod.GET)
-    public Map<String,Object> insertForumuser(Forumuser forumuser){
+    @RequestMapping(value = "/inserforumuser",method = RequestMethod.POST)
+    public String insertForumuser(Forumuser forumuser){
         String test = getForumuser(forumuser.getOpenid())
-                .get("forumusernum")
+                .get("forumuser")
                 .toString();
-
-        String userid = String.valueOf((int)((Math.random()*9+1)*10000000));
-        Map<String,Object> useridMap= new HashMap<String,Object>();
-
-        /********************************************管理员*/
-        Boolean hasadministor = false;
-        List<String> administor = new LinkedList<String>();
-//        administor.add("oyUd75XZF0bBq3vCkSfo4an7hxNs");
-        Iterator<String> itor = administor.iterator();
-        while (itor.hasNext()){
-            if(itor.next().equals(forumuser.getOpenid())) hasadministor = true;
-        }
-        useridMap.put("hasadministor",hasadministor);
-
         if(test.equals("0")){
-            forumuser.setCon1(userid);
             String nickName = forumuser.getNickName();
             try {
                 nickName = URLDecoder.decode(nickName, "UTF-8");
@@ -58,37 +45,7 @@ public class ForumuserController {
                 e.printStackTrace();
             }
             forumuserService.insert(forumuser);
-            useridMap.put("userid",userid);
-        }else {
-            userid = forumuserService
-                    .getForumuser(forumuser.getOpenid())
-                    .get(0)
-                    .getCon1();
-            useridMap.put("userid",userid);
         }
-        return useridMap;
-    }
-
-    @RequestMapping(value = "/getuserid",method = RequestMethod.GET)
-    public String getUserId(String openid){
-        String userid = forumuserService
-                .getForumuser(openid)
-                .get(0)
-                .getCon1();
-        return userid;
-    }
-
-    @RequestMapping(value = "/judgeteacher",method = RequestMethod.GET)
-    public String judgeTeacher(String openid){
-        String userid = forumuserService
-                .getForumuser(openid)
-                .get(0)
-                .getCon2();
-        return userid;
-    }
-
-    @RequestMapping(value = "/updateorumuser",method = RequestMethod.GET)
-    public void updateForumuser(String con2,String con1){
-        forumuserService.update(con2,con1);
+        return "success";
     }
 }

@@ -4,40 +4,25 @@
 <view wx:if="{{ensure}}">
   <view class='container'>
     <form bindsubmit='datasubmit'>
-      <input type='text' name="topic" class='input topic' placeholder='主题' maxlength='10'></input>
-      <input type='text' name="author" class='input author' placeholder='姓名(非必填)' maxlength='10'></input>
+      <input type='text' name="topic" class='input topic' placeholder='主题'></input>
+      <input type='text' name="author" class='input author' placeholder='姓名'></input>
       <input type='text' disabled='true' name="nickName" class='nickName hide' value='{{userInfo.nickName}}'></input>
-      <textarea placeholder='请输入问题描述' maxlength='280' name="content" class='content'></textarea>
+      <textarea placeholder='问题描述...' name="content" class='content'></textarea>
       <input type='text' disabled='true' name="openid" class='openid hide' value='{{userOpenid}}'></input>
-      <!-- <view class='sign-text'>选择课程：</view> -->
+      <view class='sign-text'>选择课程：</view>
       <picker bindchange="bindPickerChange" value="{{index}}" range="{{array}}">
         <view class="picker">
-          课程：{{course}}
+          当前选择：{{course}}
         </view>
       </picker>
-
-      <view class='img-seclet' wx:if="{{images.length < 1}}">
-        <view bindtap='addphoto'>选择图片</view>
-      </view>
-
-      <view>
-        <block wx:for="{{images}}" wx:key="index">
-          <view class="q-image-wrap">
-            <!-- 图片缩略图  -->
-            <image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
-            <!-- 移除图片的按钮  -->
-            <view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
-          </view>
-        </block>
-      </view>
 
       <button form-type='submit' class='publish'>点击发布</button>
     </form>
   </view>
   <view class='tip'>
-    注意事项:
+    tip:
     <view class='tipcontent'>1.输入合适的主题方便他人检索问题</view>
-    <view class='tipcontent'>2.详细的问题描述,是解决问题的开始</view>
+    <view class='tipcontent'>2.详细的问题描述,是问题的开始...</view>
     <view class='tipcontent'>3.输入准确的姓名,能让您的好友更好的回答问题</view>
     <view class='tipcontent'>4.暂不支持输入表情,输入表情会出现提交失败的情况</view>
     <view class='tipcontent'>5.如果课程中没有您想要选择的课程,请在反馈建议中提交，我们会陆续添加</view>

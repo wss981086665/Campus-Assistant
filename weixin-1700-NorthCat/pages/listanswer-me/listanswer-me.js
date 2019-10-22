@@ -9,15 +9,10 @@ Page({
     userOpenid: '',
     ensure: false,
     hasvalue: true,
-    judgedelete: true,
-    rejudge: true,
     imageurl: [
 
     ],
-    myanswerlist: [],
-    previews2: [],
-    page: 0,
-    hiddenpage: true
+    myanswerlist: ''
   },
 
   toquestion:function(e) {
@@ -35,7 +30,6 @@ Page({
         var openid = question.factor1;
         var avatarUrl = question.factor2;
         var content = question.content;
-        var questionimg = question.factor6;
         if (question == null) {
           var toastText = '获取数据失败' + res.data.errMsg;
           wx.showToast({
@@ -45,7 +39,7 @@ Page({
           })
         } else {
           wx.navigateTo({
-            url: '../answer/answer?topic=' + topic + '&author=' + author + '&content=' + content + '&openid=' + openid + '&nickName=' + nickName + '&avatarUrl=' + avatarUrl + '&id=' + id+'&questionimg='+questionimg,
+            url: '../answer/answer?topic=' + topic + '&author=' + author + '&content=' + content + '&openid=' + openid + '&nickName=' + nickName + '&avatarUrl=' + avatarUrl + '&id=' + id,
           })
         }
       }
@@ -64,82 +58,10 @@ Page({
         if (res.confirm) {
           wx.request({
             url: api.ip + 'superroot/deleteanswerbyids?ids=' + ids,
-            success:function() {
-              that.onReady();
-            }
           })
+          that.onReady();
         }
       }
-    })
-  },
-
-  showcommentimg: function (e) {
-    var index = e.currentTarget.dataset.demo;
-    var newarray = [index];
-    this.data.previews2 = this.data.previews2.concat(newarray);
-    var previews2 = this.data.previews2
-    wx.previewImage({
-      urls: previews2
-    })
-    this.data.previews2 = []
-  },
-
-  condelete: function () {
-    this.setData({
-      judgedelete: false
-    })
-  },
-
-  nodelete: function () {
-    this.setData({
-      judgedelete: true
-    })
-  },
-
-  loadmore: function() {
-    var that = this;
-    var page = that.data.page +1;
-    wx.getStorage({
-      key: 'userOpenid',
-      success: function (res) {
-        wx.showLoading({
-          title: '正在加载',
-        })
-        wx.request({
-          url: api.ip + 'superroot/getanswersbyopenid?element1=' + res.data + '&page=' + page * 10,
-          method: 'GET',
-          data: {},
-          success: function (res) {
-            var ianswerlist = res.data.answerlist;
-            if (ianswerlist == null) {
-              var toastText = '获取数据失败' + res.data.errMsg;
-              wx.showToast({
-                title: toastText,
-                icon: '',
-                duration: 2000 //弹出时间
-              })
-            } else {
-              if (ianswerlist.length == 0) {
-                wx.showToast({
-                  title: '没有更多内容',
-                  icon: 'none',
-                  duration: 850
-                })
-              } else {
-                var theans = that.data.myanswerlist;
-                that.setData({
-                  myanswerlist: theans.concat(ianswerlist),
-                  page : page
-                });
-                wx.showToast({
-                  title: '加载成功',
-                  duration: 850
-                })
-              }
-            }
-          }
-        })
-      },
     })
   },
   
@@ -152,7 +74,6 @@ Page({
    */
   onReady: function () {
     var that = this;
-    var page = that.data.page;
     wx.getStorage({
       key: 'userOpenid',
       success: function (res) {
@@ -160,7 +81,7 @@ Page({
           title: '正在加载',
         })
         wx.request({
-          url: api.ip + 'superroot/getanswersbyopenid?element1=' + res.data + '&page=' + page,
+          url: api.ip + 'superroot/getanswersbyopenid?factor1=' + res.data,
           method: 'GET',
           data: {},
           success: function (res) {
@@ -179,14 +100,8 @@ Page({
                 })
               } else {
                 that.setData({
-                  myanswerlist: answerlist,
-                  rejudge: false,
+                  myanswerlist: answerlist
                 });
-                if (answerlist.length == 10) {
-                  that.setData({
-                    hiddenpage: false
-                  })
-                }
               }
               wx.hideLoading();
             }
@@ -201,12 +116,24 @@ Page({
    */
   onShow: function () {
     var that = this;
-    wx.getStorage({
-      key: 'ensure',
+    wx.request({
+      url: api.ip + 'ensure/ensurenumber',
+      method: 'GET',
+      data: {},
       success: function (res) {
-        that.setData({
-          ensure: res.data
-        })
+        var ensure = res.data.ensure;
+        if (ensure == null) {
+          var toastText = '获取数据失败' + res.data.errMsg;
+          wx.showToast({
+            title: toastText,
+            icon: '',
+            duration: 2000 //弹出时间
+          })
+        } else {
+          that.setData({
+            ensure: ensure
+          })
+        }
       }
     })
   },

@@ -88,12 +88,24 @@ Page({
    */
   onReady: function () {
     var that = this;
-    wx.getStorage({
-      key: 'ensure',
+    wx.request({
+      url: api.ip + 'ensure/ensurenumber',
+      method: 'GET',
+      data: {},
       success: function (res) {
-        that.setData({
-          ensure: res.data
-        })
+        var ensure = res.data.ensure;
+        if (ensure == null) {
+          var toastText = '获取数据失败' + res.data.errMsg;
+          wx.showToast({
+            title: toastText,
+            icon: '',
+            duration: 2000 //弹出时间
+          })
+        } else {
+          that.setData({
+            ensure: ensure,
+          });
+        }
       }
     })
   },

@@ -35,9 +35,7 @@ Page({
     sign: '',
     style: '',
     school: '',
-    hobby: '',
-    images: [],
-    imagename: ''
+    hobby: ''
   },
 
   bindinput1: function(e) {
@@ -97,30 +95,15 @@ Page({
     }
   },
 
-  addphoto:function(e) {
-    var that = this;
-    wx.chooseImage({
-      count: 1,
-      sizeType: ['original', 'compressed'],  //可选择原图或压缩后的图片
-      sourceType: ['album', 'camera'], //可选择性开放访问相册、相机
-      success: function(res) {
-        const images = that.data.images.concat(res.tempFilePaths)
-        that.setData({
-          images: images.length <= 1 ? images : images.slice(0, 1)
-        })
-      }
-    })
-  },
-
-  addelement: function (e) {
+  addelement: function(e) {
     var tip = e.currentTarget.dataset.text;
     var placeholder = e.currentTarget.dataset.placeholder;
     var bindinput = e.currentTarget.dataset.bindinput;
     var inputlist = this.data.inputlist;
     var length = inputlist.length;
     var judge = "no";
-    for (var i = 0; i < length; i++) {
-      if (inputlist[i].tip == tip) {
+    for(var i=0; i<length; i++){
+      if (inputlist[i].tip == tip){
         judge = "yes";
         wx.showToast({
           title: '重复添加',
@@ -129,7 +112,7 @@ Page({
         break;
       }
     }
-    if (judge == "no") {
+    if(judge == "no"){
       var newarray = [{
         tip: tip,
         placeholder: placeholder,
@@ -137,28 +120,10 @@ Page({
       }];
       this.data.inputlist = this.data.inputlist.concat(newarray);
       this.setData({
-        inputlist: this.data.inputlist,
-        hiddenit: true,
+        'inputlist': this.data.inputlist,
+         hiddenit: true,
       });
     }
-  },
-
-  removeImage(e) {
-    var that = this;
-    const idx = e.target.dataset.idx
-    that.data.images.splice(idx, 1)
-    that.setData({
-      images: that.data.images
-    })
-  },
-
-  handleImagePreview(e) {
-    const idx = e.target.dataset.idx
-    const images = this.data.images
-    wx.previewImage({
-      current: images[idx],  //当前预览的图片
-      urls: images,  //所有要预览的图片
-    })
   },
 
   hide: function() {
@@ -181,9 +146,7 @@ Page({
     var style = this.data.style; 
     var school = this.data.school; 
     var hobby = this.data.hobby; 
-    var TIME = util.formatData(new Date());
     var that = this;
-
     if(author == ''){
       wx.showToast({
         title: '作者栏为必填内容',
@@ -202,7 +165,6 @@ Page({
             key: 'userOpenid',
             success: function (resin) {
               var userOpenid = resin.data;
-              var filePath = that.data.images;
               if (res.tapIndex === 0) {
                 nickName = encodeURIComponent(nickName); nickName = encodeURIComponent(nickName);//二次编码
                 title = encodeURIComponent(title); title = encodeURIComponent(title);//二次编码
@@ -215,77 +177,39 @@ Page({
                 style = encodeURIComponent(style); style = encodeURIComponent(style);//二次编码
                 school = encodeURIComponent(school); school = encodeURIComponent(school);//二次编码
                 hobby = encodeURIComponent(hobby); hobby = encodeURIComponent(hobby);//二次编码
-
                 wx.showLoading({
                   title: '正在上传',
                 })
-
-                //上传图片
-                if(filePath[0] == null){
-                  wx.request({
-                    url: api.ip + 'forarticle/insertarticlebyid?title=' + title + '&content=' + content + '&author=' + author +
-                      '&openid=' + userOpenid + '&nickName=' + nickName + '&avatarUrl=' + avatarUrl + '&described=' +
-                      described + '&wechat=' + wechat + '&qq=' + qq + '&sign=' + sign + '&style=' + style + '&school=' + school + '&hobby=' + hobby + '&fac1=defaultimg.jpg' + '&fac3=' + TIME,
-                    method: 'POST',
-                    data: {},
-                    success: function () {
-                      wx.showToast({
-                        title: '上传成功',
-                      })
-                      setTimeout(function () {
-                        wx.switchTab({
-                          url: '../index/index'
-                        })
-                      }, 1000)
-                    }
-                  })
-                } else {
-                  wx.uploadFile({
-                    url: api.ip + 'ensure/uploadfile',
-                    filePath: filePath[0],
-                    name: 'file',
-                    formData: {
-                      'user': '王顺顺'
-                    },
-                    header: {
-                      'content-type': 'multipart/form-data'
-                    }, // 设置请求的 header
-                    success: function (res) {
-                      var filename = res.data;
-                      if (filename) {
-                        wx.request({
-                          url: api.ip + 'forarticle/insertarticlebyid?title=' + title + '&content=' + content + '&author=' + author +
-                            '&openid=' + userOpenid + '&nickName=' + nickName + '&avatarUrl=' + avatarUrl + '&described=' +
-                            described + '&wechat=' + wechat + '&qq=' + qq + '&sign=' + sign + '&style=' + style + '&school=' + school + '&hobby=' + hobby + '&fac1=' + filename,
-                          method: 'POST',
-                          data: {},
-                          success: function () {
-                            wx.showToast({
-                              title: '上传成功',
-                              duration: 1500
-                            })
-                            setTimeout(function () {
-                              wx.switchTab({
-                                url: '../index/index'
-                              })
-                            }, 1000)
-                          }
-                        })
-                      }
-                    },
-                    fail: function () {
-                      console.log("失败")
-                    }
-                  })
-                }
+                wx.request({
+                  url: api.ip + 'forarticle/insertarticlebyid?title=' + title + '&content=' + content + '&author=' + author +
+                    '&openid=' + userOpenid + '&nickName=' + nickName + '&avatarUrl=' + avatarUrl + '&described=' +
+                    described + '&wechat=' + wechat + '&qq=' + qq + '&sign=' + sign + '&style=' + style + '&school=' + school + '&hobby=' + hobby,
+                  method: 'POST',
+                  data: {},
+                  success: function () {
+                    wx.showToast({
+                      title: '上传成功',
+                    })
+                  }
+                })
               } else if (res.tapIndex === 1) {
+                userOpenid = that.data.userOpenid;
                 nickName = that.data.userInfo.nickName;
+                avatarUrl = that.data.userInfo.avatarUrl;
                 title = e.currentTarget.dataset.title;
                 content = e.currentTarget.dataset.content;
                 author = that.data.author;
                 described = that.data.described;
+                wechat = that.data.wechat;
+                qq = that.data.qq;
+                sign = that.data.sign;
+                style = that.data.style;
+                school = that.data.school;
+                hobby = that.data.hobby; 
                 wx.navigateTo({
-                  url: '../article-share/article-share?title=' + title + '&content=' + content + '&author=' + author + '&describe=' +described + '&nickName=' + nickName,
+                  url: '../article-share/article-share?title=' + title + '&content=' + content + '&author=' + author + '&describe=' +
+                    described + '&wechat=' + wechat + '&qq=' + qq + '&sign=' + sign + '&style=' + style + '&school=' + school + '&hobby=' + hobby +
+                    '&userOpenid=' + userOpenid + '&nickName=' + nickName + '&avatarUrl=' + avatarUrl,
                 })
               }
             },
@@ -317,18 +241,30 @@ Page({
         })
       },
     })
-    wx.getStorage({
-      key: 'ensure',
-      success: function (res) {
-        that.setData({
-          ensure: res.data
-        })
-      }
-    })
   },
 
   onShow: function () {
-    
+    var that = this;
+    wx.request({
+      url: api.ip + 'ensure/ensurenumber',
+      method: 'GET',
+      data: {},
+      success: function (res) {
+        var ensure = res.data.ensure;
+        if (ensure == null) {
+          var toastText = '获取数据失败' + res.data.errMsg;
+          wx.showToast({
+            title: toastText,
+            icon: '',
+            duration: 2000 //弹出时间
+          })
+        } else {
+          that.setData({
+            ensure: ensure,
+          });
+        }
+      }
+    })
   },
 
   onHide: function () {

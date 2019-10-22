@@ -1,40 +1,45 @@
 <view class='container'>
 
-  <view class='userinfo'>
+  <view wx:if="{{ensure}}">
+    <view class='userinfo'>
 
       <view class="top">
         <button wx:if="{{!hasUserInfo && canIUse}}" class='login' open-type="getUserInfo" bindgetuserinfo="getUserInfo"> 登录 </button>
         <block wx:else>
           <view class='head'><image class="headimg" src="{{userInfo.avatarUrl}}" mode="cover"></image></view>
           <view class='username'>{{userInfo.nickName}}</view>
-          <view class='autograph'>
-            <label class='autograph-text'>ID:{{userid}}</label>
-          </view>
+        <view class='autograph'>
+          <input type='text' class='autograph-text' placeholder='个性签名...'></input>
+        </view>
         </block>
       </view>
 
+      <view class='bottom'>
+        <view class='bottom-text'>海量问题等待解答,你还在等什么呢></view>
+      </view>
     </view>
+    <view class='middle'>
 
-  <view wx:if="{{ensure}}">
-    <view class='middle-con'>
-      <view class='middle'>
-        <view class='middles middle-left'>
-            <view class='middle-button' bindtap='bindViewTap2'>
-              <image class="middle-img" src="../../image/myquestion.png" mode="cover"></image>
-              <view class='middle-text'>我的问题</view>
-            </view>
-        </view>
-        <view class='middles middle-middle'>
-            <view class='middle-button' bindtap='bindViewTap3'>
-              <image class="middle-img" src="../../image/mycomment.png" mode="cover"></image>
-              <view class='middle-text'>我的回答</view>
-            </view>
-        </view>
-        <view class='middles middle-right' bindtap="bindViewTap4">
-          <view class='middle-button'>
-            <image class="middle-img" src="../../image/articleicon.png" mode="cover"></image>
-            <view class='middle-text'>文章检索</view>
+      <view class='middles middle-left'>
+          <view class='middle-button' bindtap='bindViewTap2'>
+            <image class="middle-img" src="http://www.xztywss.top/img/luntan/myquestion.png" mode="cover"></image>
+            <view class='middle-text'>我的问题</view>
           </view>
+          <i-message id="message" />
+      </view>
+
+      <view class='middles middle-middle'>
+        <form>
+          <view class='middle-button' bindtap='bindViewTap3'>
+            <image class="middle-img" src="http://www.xztywss.top/img/luntan/mycomment.png" mode="cover"></image>
+            <view class='middle-text'>我的回答</view>
+          </view>
+        </form>
+      </view>
+      <view class='middles middle-right' bindtap="bindViewTap4">
+        <view class='middle-button'>
+          <image class="middle-img" src="http://www.xztywss.top/img/luntan/articleicon.png" mode="cover"></image>
+          <view class='middle-text'>文章检索</view>
         </view>
       </view>
     </view>
@@ -44,42 +49,25 @@
     </modal>  
 
     <view class='container2'>
-      <view class='asdf myarticle' bindtap="bindViewTap6">
-        <image class='asdf-img' src='../../image/myarticle2.png' mode='cover'></image>
-        我的文章
-        <image class="direction-img" src="../../image/direction.png" mode="cover"></image>
+      <view class='myarticle' bindtap="bindViewTap6">我的文章
+        <image class="direction-img" src="http://www.xztywss.top/img/luntan/direction.png" mode="cover"></image>
       </view>
-    </view>
-    <view class='container2'>
-      <view class='asdf teacher' bindtap="bindViewTap9">
-        <image class='asdf-img' src='../../image/teacher2.png' mode='cover'></image>
-        认证教师
-        <image class="direction-img" src="../../image/direction.png" mode="cover"></image>
+      <view class='searcharticle' bindtap="bindViewTap7">联系我们
+        <image class="direction-img" src="http://www.xztywss.top/img/luntan/direction.png" mode="cover"></image>
       </view>
-    </view>
-    <view class='container2'>
-      <view class='asdf relation' bindtap="bindViewTap7">
-        <image class='asdf-img' src='../../image/contact2.png' mode='cover'></image>
-        联系我们
-        <image class="direction-img" src="../../image/direction.png" mode="cover"></image>
-      </view>
-    </view>
-    <view class='container2'>
-      <view class='asdf explain' bindtap="bindViewTap5">
-        <image class='asdf-img' src='../../image/explain2.png' mode='cover'></image>
-        使用手册
-        <image class="direction-img" src="../../image/direction.png" mode="cover"></image>
+      <view class='declare' bindtap="bindViewTap5">免责声明
+        <image class="direction-img" src="http://www.xztywss.top/img/luntan/direction.png" mode="cover"></image>
       </view>
     </view>
     <view class='customservice'>
+      <!-- <button class='kefu' open-type='contact'><image src='../../image/kefu.png' style='width:100%;height:100%'></image></button> -->
       <button class='kefu' open-type='contact'>客服</button>
     </view>
   </view>
   <block wx:else>
     <view wx:for="{{imageurl}}" wx:key wx:for-index="index" wx:for-item="item">
-      <view class='hide-tip'>线条画儿</view>
-      <view class='hide-con'>线条画（又称“线描”）是以线条为主要表现手段的绘画形式。"线条"是线条画中的主要组成部分，在实际绘画过程中也运用了"点","面"等处理方法，以增强画面的表现力。</view>
-      <view class='hide-image' style="background:url('{{item}}') -20px -20px;background-size: 120% 480rpx;"></view>
+      <view class='image' style="background:url('{{item}}');background-size: 100% 500rpx;">
+      </view>
     </view>
   </block>
 

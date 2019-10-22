@@ -25,7 +25,6 @@ Page({
     style: '',
     school: '',
     hobby: '',
-    filePath: [],
 
     userInfo: {},
   },
@@ -53,59 +52,92 @@ Page({
   },
 
   showmenu:function() {
-    var filePath = this.data.filePath;
+    var userOpenid = this.data.userOpenid;
+    var nickName = this.data.userInfo.nickName;nickName = encodeURIComponent(nickName);nickName = encodeURIComponent(nickName);//二次编码
+    var avatarUrl = this.data.userInfo.avatarUrl;
+    var title = this.data.title; title = encodeURIComponent(title); title = encodeURIComponent(title);//二次编码
+    var content = this.data.content; content = encodeURIComponent(content); content = encodeURIComponent(content);//二次编码
+    var author = this.data.author; author = encodeURIComponent(author); author = encodeURIComponent(author);//二次编码
+    var described = this.data.described; described = encodeURIComponent(described); described = encodeURIComponent(described);//二次编码
+    var wechat = this.data.wechat; wechat = encodeURIComponent(wechat); wechat = encodeURIComponent(wechat);//二次编码
+    var qq = this.data.qq; qq = encodeURIComponent(qq); qq = encodeURIComponent(qq);//二次编码
+    var sign = this.data.sign; sign = encodeURIComponent(sign); sign = encodeURIComponent(sign);//二次编码
+    var style = this.data.style; style = encodeURIComponent(style); style = encodeURIComponent(style);//二次编码
+    var school = this.data.school; school = encodeURIComponent(school); school = encodeURIComponent(school);//二次编码
+    var hobby = this.data.hobby; hobby = encodeURIComponent(hobby); hobby = encodeURIComponent(hobby);//二次编码
     wx.showActionSheet({
-      itemList: ['保存图片到本地'],
+      itemList: ['发表文章','保存图片到本地'],
       success(res) {
-          if (res.tapIndex === 0) {
-            wx.canvasToTempFilePath({
-              canvasId: 'shareCanvas',
-              success: function (resp) {
-                wx.saveImageToPhotosAlbum({
-                  filePath: resp.tempFilePath,
-                  success: function (resps) {
-                    wx.showToast({
-                      title: '已保存到相册'
-                    })
-                  }
-                })
-              }
-            })
+        wx.canvasToTempFilePath({
+          canvasId: 'shareCanvas',
+          success:function(resp) {
+            if (res.tapIndex === 0) {
+              wx.showLoading({
+                title: '正在上传',
+              })
+              wx.request({
+                url: api.ip + 'forarticle/insertarticlebyid?title=' + title + '&content=' + content + '&author=' + author +
+                  '&openid=' + userOpenid + '&nickName=' + nickName + '&avatarUrl=' + avatarUrl+ '&described=' +
+                  described + '&wechat=' + wechat + '&qq=' + qq + '&sign=' + sign + '&style=' + style + '&school=' + school + '&hobby=' + hobby,
+                method: 'POST',
+                data: {},
+                success:function() {
+                  wx.showToast({
+                    title: '上传成功',
+                  })
+                }
+              })
+            }else if (res.tapIndex === 1) {
+              wx.saveImageToPhotosAlbum({
+                filePath: resp.tempFilePath,
+                success: function (resps) {
+                  wx.showToast({
+                    title: '已保存到相册'
+                  })
+                }
+              })
+            }
           }
+        })
       }
     })
   },
 
   onLoad: function (options) {
     this.setData({
-      nickName: options.nickName,
+      userOpenid: options.userOpenid,
+      nickName: '',
+      avatarUrl: '',
       title: options.title,
       content: options.content,
       author: options.author,
       describe: options.describe,
+      wechat: options.wechat,
+      qq: options.qq,
+      sign: options.sign,
+      style: options.style,
+      school: options.school,
+      hobby: options.hobby,
+      userInfo: app.globalData.userInfo,
     })
+  },
+
+  onReady: function () {
     var that = this;
-    wx.showLoading({
-      title: '生成中',
-    })
-    wx.downloadFile({
-      url: 'http://www.xztywss.top/img/luntan/articlebgm2.jpg',
+    var title = that.data.title;
+    var content = that.data.content;
+    var author = that.data.author;
+    var describe = that.data.describe;
+    var nickName = that.data.userInfo.nickName;
+    wx.getImageInfo({
+      src: 'http://www.xztywss.top/img/luntan/articlebgm2.jpg',
       success: function (res) {
-        const filePath = res.tempFilePath
-        that.setData({
-          posterurl: filePath,
-        });
-        var title = that.data.title;
-        var content = that.data.content;
-        var author = that.data.author;
-        var describe = that.data.describe;
-        var nickName = that.data.nickName;
         const ctx = wx.createCanvasContext('shareCanvas')
-        ctx.drawImage(that.data.posterurl, 0, 0, 350, 570)
+        ctx.drawImage(res.path, 0, 0, 350, 570)
         ctx.setFontSize(22)
         ctx.fillText(title, 25, 35)
         ctx.setFontSize(16)
-        ctx.fillText('作者:' + author, 25, 385)
+        ctx.fillText('作者:'+author, 25, 385)
         ctx.fillText('文章描述:' + describe, 25, 410)
         ctx.setFillStyle('orange')
         ctx.fillText('长按识别小程序码-->', 30, 480)
@@ -113,33 +145,34 @@ Page({
         ctx.fillText('长按识别小程序码-->', 30, 520)
         ctx.setFillStyle('gray')
         ctx.setFontSize(14)
-        ctx.fillText('文章搜索:' + nickName, 10, 540)
+        ctx.fillText('文章搜索:'+nickName, 10, 540)
         ctx.setFillStyle('black')
         that.drawText(ctx, content, 23, 57, 148, 295);
         ctx.draw()
-        wx.hideLoading();
-      }
-    })
-  },
-
-  onReady: function () {
-    var that = this;
-    wx.getImageInfo({
-      src: 'http://www.xztywss.top/img/luntan/articlebgm2.jpg',
-      success: function (res) {
-        
       }
     })
   },
 
   onShow: function () {
     var that = this;
-    wx.getStorage({
-      key: 'ensure',
+    wx.request({
+      url: api.ip + 'ensure/ensurenumber',
+      method: 'GET',
+      data: {},
       success: function (res) {
-        that.setData({
-          ensure: res.data
-        })
+        var ensure = res.data.ensure;
+        if (ensure == null) {
+          var toastText = '获取数据失败' + res.data.errMsg;
+          wx.showToast({
+            title: toastText,
+            icon: '',
+            duration: 2000 //弹出时间
+          })
+        } else {
+          that.setData({
+            ensure: ensure,
+          });
+        }
       }
     })
   },

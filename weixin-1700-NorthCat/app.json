@@ -19,20 +19,15 @@
     "pages/listarticle-display/listarticle-display",
     "pages/listarticle-author/listarticle-author",
     "pages/advise/advise",
-    "pages/advise-detail/advise-detail",
-    "pages/apply-teacher/apply-teacher",
-    "pages/apply-teacher-look/apply-teacher-look"
+    "pages/advise-detail/advise-detail"
   ],
   "window": {
     "backgroundTextStyle": "light",
     "navigationBarBackgroundColor": "#ffffff",
     "navigationBarTitleText": "蜂窝V校园",
-    "navigationBarTextStyle": "black",
-    "backgroundColor": "#64B4FF"
+    "navigationBarTextStyle": "black"
   },
   "tabBar": {
-    "selectedColor": "#64B4FF",
-    "color": "#8D8D8D",
     "list": [
       {
         "pagePath": "pages/index/index",
@@ -53,6 +48,5 @@
         "selectedIconPath": "image/in我.png"
       }
     ]
-  },
-  "sitemapLocation": "sitemap.json"
+  }
 }

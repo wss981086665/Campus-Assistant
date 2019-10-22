@@ -3,30 +3,25 @@
 <view>
 <view wx:if="{{ensure}}">
 
-  <view wx:for="{{questions}}" wx:key="{{questions.id}}" we:for-index="index" wx:for-item="item" class='container'>
-    <view class='textraea' bindtap='detail' data-id="{{item.id}}" data-topic="{{item.topic}}" data-author="{{item.author}}" data-factor1="{{item.factor1}}" data-factor4="{{item.factor4}}" data-factor2="{{item.factor2}}" data-content="{{item.content}}" data-factor6="{{item.factor6}}">
-      <view class='topic-container'>
+  <view class='blank'></view>
+   <view wx:for="{{questions}}" wx:key="{{questions}}.id" we:for-index="index" wx:for-item="item">
+    <view class='textraea' bindtap='detail' data-id="{{item.id}}" data-topic="{{item.topic}}" data-author="{{item.author}}" data-factor1="{{item.factor1}}" data-factor4="{{item.factor4}}" data-factor2="{{item.factor2}}" data-content="{{item.content}}">
+      <view' class='topic-container'>
           <view class='topic-img'>
             <image class="topic-i" src="{{item.factor2}}" mode="cover"></image>
           </view>
-          <view name="topic" class='topic'><text>{{item.factor4}}</text><text class='text-img-a' hidden="{{item.factor6 == 'defaultimg.jpg'}}">(图)</text><text class='text2'>\n{{item.topic}}</text></view>
+          <view name="topic" class='topic'><text>{{item.factor4}}\n</text><text class='text2'>{{item.topic}}</text></view>
         </view>
         <view name="content" class='content'>{{item.content}}</view>
     </view>
     <view class="bottom-bar">
       <view class='bottombar-text'>{{item.factor5}}</view>
-      <view class='comment-img' bindtap='detail' data-id="{{item.id}}" data-topic="{{item.topic}}" data-factor1="{{item.factor1}}" data-factor4="{{item.factor4}}" data-factor2="{{item.factor2}}" data-author="{{item.author}}" data-content="{{item.content}}" data-factor6="{{item.factor6}}"><image src='../../image/commenticon.png' style='width:100%;height:100%'></image></view>
-      <view class='share-img' bindtap='detail' data-id="{{item.id}}" data-topic="{{item.topic}}" data-factor1="{{item.factor1}}" data-factor4="{{item.factor4}}" data-factor2="{{item.factor2}}" data-author="{{item.author}}" data-content="{{item.content}}" data-factor6="{{item.factor6}}"><image src='../../image/share.png' style='width:100%;height:100%'></image></view>
+      <view class='comment-img' bindtap='detail' data-id="{{item.id}}" data-topic="{{item.topic}}" data-factor1="{{item.factor1}}" data-factor4="{{item.factor4}}" data-factor2="{{item.factor2}}" data-author="{{item.author}}" data-content="{{item.content}}"><image src='../../image/commenticon.png' style='width:100%;height:100%'></image></view>
+      <view class='share-img' bindtap='detail2' data-id="{{item.id}}" data-topic="{{item.topic}}" data-author="{{item.author}}" data-content="{{item.content}}"><image src='../../image/share.png' style='width:100%;height:100%'></image></view>
     </view>
   </view>
-  <view class='pageit' hidden='{{hiddenpage}}'>
-    <view class='loadmore' bindtap='loadmore'>--点击加载更多--</view>
-  </view>
-  <view class='blank'></view>
-  <view hidden='{{hasvalue}}'>
-    <view class='hasvalue'>
-      <image class='hasimg' src="../../image/pure.png" mode="cover"></image>
-    </view>
+  <view hidden='{{hasvalue}}' class='hasvalue'>
+    <view class='hasimg'></view>
     <view class='hastext'>什么东西也没有</view>
   </view>
 </view>

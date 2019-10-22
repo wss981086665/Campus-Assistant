@@ -1,7 +1,6 @@
 package com.wss.springboot.service;
 
 import com.wss.springboot.bean.Article;
-import com.wss.springboot.bean.ArticlePage;
 import com.wss.springboot.dao.ArticleMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -37,20 +36,15 @@ public class ArticleService {
         return articles;
     }
 
-    public List<Article> getArticleByOpenid(ArticlePage articlePage){
-        List<Article> articles = articleMapper.getArticleByOpenid(articlePage);
+    public List<Article> getArticleByOpenid(String openid){
+        List<Article> articles = articleMapper.getArticleByOpenid(openid);
         return articles;
     }
 
     //查询所有数据
-    public List<Article> getSearch(String index){
-        List<Article> allarticle = articleMapper.getSearch(index);
+    public List<Article> getAll(){
+        List<Article> allarticle = articleMapper.getAll();
         return allarticle;
-    }
-
-    public List<Article> getArticleByFac2(){
-        List<Article> articles = articleMapper.getArticleByFac2("1");
-        return articles;
     }
 
 }

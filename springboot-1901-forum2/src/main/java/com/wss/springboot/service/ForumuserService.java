@@ -25,8 +25,4 @@ public class ForumuserService {
         forumuserMapper.insertForumuser(forumuser);
     }
 
-    public void update(String con2,String con1){
-        forumuserMapper.updateForumuser(con2,con1);
-    }
-
 }

@@ -10,14 +10,17 @@
    <view class='title'>{{article.title}}</view>
    <view class='author'>——{{article.author}}</view>
    <view class='contents'><text space="emsp">  {{article.content}}</text></view>
-   <view class='more' bindtap='coperate'>More</view>
+   <view class='more' bindtap='coperate'>
+    <image class='more-image' src='http://www.xztywss.top/img/luntan/more.png'></image>
+    <view class='more-text'>更多</view>
+   </view>
    <view class='moreformation' hidden='{{hiddenit}}'>
-     <view class='demo' hidden='{{hiddenit || article.wechat==""}}'><text space="ensp">微信: {{article.wechat}}</text></view>
-     <view class='demo' hidden='{{hiddenit || article.qq==""}}'><text space="ensp">QQ: {{article.qq}}</text></view>
-     <view class='demo' hidden='{{hiddenit || article.sign==""}}'><text space="ensp">标签: {{article.sign}}</text></view>
-     <view class='demo' hidden='{{hiddenit || article.style==""}}'><text space="ensp">风格: {{article.style}}</text></view>
-     <view class='demo' hidden='{{hiddenit || article.school==""}}'><text space="ensp">学校: {{article.school}}</text></view>
-     <view class='demo last' hidden='{{hiddenit || article.hobby==""}}'><text space="ensp">爱好: {{article.hobby}}</text></view>
+     <view class='demo' hidden='{{hiddenit}}'><text space="ensp">微信: {{article.wechat}}</text></view>
+     <view class='demo' hidden='{{hiddenit}}'><text space="ensp">QQ: {{article.qq}}</text></view>
+     <view class='demo' hidden='{{hiddenit}}'><text space="ensp">标签: {{article.sian}}</text></view>
+     <view class='demo' hidden='{{hiddenit}}'><text space="ensp">风格: {{article.style}}</text></view>
+     <view class='demo' hidden='{{hiddenit}}'><text space="ensp">学校: {{article.school}}</text></view>
+     <view class='demo' hidden='{{hiddenit}}'><text space="ensp">爱好: {{article.hobby}}</text></view>
    </view>
  </view>
 

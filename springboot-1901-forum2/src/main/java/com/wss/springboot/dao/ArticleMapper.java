@@ -1,7 +1,6 @@
 package com.wss.springboot.dao;
 
 import com.wss.springboot.bean.Article;
-import com.wss.springboot.bean.ArticlePage;
 import org.apache.ibatis.annotations.Delete;
 import org.apache.ibatis.annotations.Insert;
 import org.apache.ibatis.annotations.Mapper;
@@ -26,13 +25,10 @@ public interface ArticleMapper {
     @Select("SELECT * FROM article WHERE nickName=#{nickName}")
     public List<Article> getArticleByNickName(String nickName);
 
-    @Select("SELECT * FROM article WHERE openid=#{openid} order by fac3 desc limit #{page},10")
-    public List<Article> getArticleByOpenid(ArticlePage articlePage);
+    @Select("SELECT * FROM article WHERE openid=#{openid}")
+    public List<Article> getArticleByOpenid(String openid);
 
-    @Select("SELECT * FROM article WHERE nickName REGEXP #{index} or author REGEXP #{index}")
-    public List<Article> getSearch(String index);
-
-    @Select("SELECT * FROM article WHERE fac2=#{fac2}")
-    public List<Article> getArticleByFac2(String fac2);
+    @Select("SELECT * FROM article WHERE id BETWEEN 0 AND 1000")
+    public List<Article> getAll();
 
 }

@@ -1,11 +1,9 @@
 <view>
-<view wx:if="{{ensure}}" class='container-s'>
-  <view class='blank'></view>
+<view wx:if="{{ensure}}">
   <i-card title="{{userInfo.nickName}}" extra="" thumb="{{userInfo.avatarUrl}}">
     <view class='title' slot="content">标题:{{title}}</view>
     <view slot="footer">{{time}}</view>
   </i-card>
-  <view class='blank'></view>
 
   <i-collapse-item title="{{title}}" name="name1">
     <view slot="content" class='content'>{{content}}</view>
@@ -15,39 +13,20 @@
     <view class='container'>
       <view class='tip'>{{item.tip}}</view>
       <input class='textinput' placeholder='{{item.placeholder}}' bindinput='{{item.bindinput}}' maxlength='10'></input>
-      <!-- <view class='deleteelement' bindtap='deleteelement' data-tip="{{item.tip}}"></view> -->
-      <image class='deleteelement' bindtap='deleteelement' src="../../image/delete2.png" data-tip="{{item.tip}}" mode="cover"></image>
+      <view class='deleteelement' bindtap='deleteelement' data-tip="{{item.tip}}"></view>
     </view>
   </view>
-  <view class='showdemo'>
-   <view class='showelement' bindtap='showelement' wx:if="{{images.length < 1}}">添加</view>
-   <view class='showelement2' bindtap='showelement' wx:if="{{images.length >= 1}}">添加</view>
-   <view class='showelement' bindtap='addphoto' wx:if="{{images.length < 1}}">选择图片</view>
-  </view>
-
-  <view>
-    <block wx:for="{{images}}" wx:key="index">
-      <view class="q-image-wrap">
-        <!-- 图片缩略图  -->
-        <image class="q-image" src="{{item}}" mode="aspectFill" data-idx="{{index}}" bindtap="handleImagePreview"></image>
-        <!-- 移除图片的按钮  -->
-        <view class="q-image-remover" data-idx="{{index}}" bindtap="removeImage">删除</view>
-      </view>
-    </block>
-  </view>
+  <view class='showelement' bindtap='showelement'>添加</view>
 
   <view class='grid' hidden='{{hiddenit}}'>
-    <view class='grid-top'>
-      <view wx:for="{{option}}" wx:key wx:for-index="index" wx:for-item="item">
-        <view class='info' bindtap='addelement' data-text="{{item.text}}" data-placeholder='{{item.placeholder}}' data-bindinput='{{item.bindinput}}'>
-          <view class='info-image' style="background:url('{{item.imageurl}}');background-size:100% 100%;"></view>
-          <view class='info-text'>{{item.text}}</view>
-        </view>
+    <view wx:for="{{option}}" wx:key wx:for-index="index" wx:for-item="item">
+      <view class='info' bindtap='addelement' data-text="{{item.text}}" data-placeholder='{{item.placeholder}}' data-bindinput='{{item.bindinput}}'>
+        <view class='info-image' style="background:url('{{item.imageurl}}');background-size:100% 100%;"></view>
+        <view class='info-text'>{{item.text}}</view>
       </view>
     </view>
     <view class='cancel' bindtap='hide'>取消</view>
   </view>
-
   <view class='next' bindtap='next' data-title='{{title}}' data-content='{{content}}'>
     <image src='../../image/next.png' style='width:100%;height:100%;'></image>
   </view>

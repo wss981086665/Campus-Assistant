@@ -1,7 +1,6 @@
 package com.wss.springboot.controller;
 
 import com.wss.springboot.bean.Article;
-import com.wss.springboot.bean.ArticlePage;
 import com.wss.springboot.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -71,9 +70,9 @@ public class ArticleController {
     }
 
     @RequestMapping(value = "/getarticlebyopenid",method = RequestMethod.GET)
-    public Map<String,Object> getArticleByOpenid(ArticlePage articlePage){
+    public Map<String,Object> getArticleByOpenid(@RequestParam(value="openid",defaultValue = "null") String openid){
         Map<String,Object> listArticle = new HashMap<String,Object>();
-        List<Article> articles = articleService.getArticleByOpenid(articlePage);
+        List<Article> articles = articleService.getArticleByOpenid(openid);
         listArticle.put("articlelist",articles);
         return listArticle;
     }
@@ -86,17 +85,20 @@ public class ArticleController {
             e.printStackTrace();
         }
         Map<String,Object> articlemap = new HashMap<String,Object>();
-        List<Article> searcharticle = articleService.getSearch(index);
+        List<Article> allarticle = articleService.getAll();
+        List<Article> searcharticle = new LinkedList<Article>();
+
+        Iterator<Article> iter = allarticle.iterator();
+        while (iter.hasNext()){
+            Article article = iter.next();
+            String nickName = article.getNickName();
+            String author = article.getAuthor();
+            if(nickName.indexOf(index)!=-1||author.indexOf(index)!=-1){
+                searcharticle.add(article);
+            }
+        }
         articlemap.put("articles",searcharticle);
         return articlemap;
-    }
-
-    @RequestMapping(value = "/getarticlebyfac2",method = RequestMethod.GET)
-    public Map<String,Object> getArticleByFac2(){
-        Map<String,Object> listArticle = new HashMap<String,Object>();
-        List<Article> articles = articleService.getArticleByFac2();
-        listArticle.put("articles",articles);
-        return listArticle;
     }
 
 }

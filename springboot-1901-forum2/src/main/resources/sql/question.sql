@@ -27,16 +27,11 @@ alter table question AUTO_INCREMENT=1;
 --   `id` int(11) NOT NULL AUTO_INCREMENT,
 --   `author` varchar(255) DEFAULT NULL,
 --   `topic` varchar(255) DEFAULT NULL,
---   `content` varchar(600) DEFAULT NULL,
+--   `content` varchar(255) DEFAULT NULL,
 --   `factor1` varchar(255) DEFAULT NULL,
 --   `factor2` varchar(255) DEFAULT NULL,
 --   `factor3` varchar(255) DEFAULT NULL,
 --   `factor4` varchar(255) DEFAULT NULL,
 --   `factor5` varchar(255) DEFAULT NULL,
---   `factor6` varchar(255) DEFAULT NULL,
---   `factor7` varchar(255) DEFAULT NULL,
---   `factor8` varchar(255) DEFAULT NULL,
---   `factor9` varchar(255) DEFAULT NULL,
---   `factor10` varchar(255) DEFAULT NULL,
 --   PRIMARY KEY (`id`)
 -- ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;

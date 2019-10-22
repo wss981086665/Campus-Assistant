@@ -1,19 +1,21 @@
 package com.wss.springboot.controller;
 
+import com.sun.org.apache.xerces.internal.xs.StringList;
 import com.wss.springboot.bean.Answer;
-import com.wss.springboot.bean.CoursePage;
 import com.wss.springboot.bean.Question;
-import com.wss.springboot.bean.QuestionPage;
 import com.wss.springboot.service.AnswerService;
 import com.wss.springboot.service.QuestionService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.RestController;
+import sun.plugin.javascript.navig.Link;
 
 import java.io.UnsupportedEncodingException;
 import java.net.URLDecoder;
 import java.util.*;
 
-@CrossOrigin
 @RestController
 @RequestMapping("/superadmin")
 public class QuestionController {
@@ -52,11 +54,7 @@ public class QuestionController {
             course = URLDecoder.decode(course, "UTF-8");
             content = URLDecoder.decode(content, "UTF-8");
             nickName = URLDecoder.decode(nickName, "UTF-8");
-            if(author == ""){
-                question.setAuthor("匿名");
-            } else {
-                question.setAuthor(author);
-            }
+            question.setAuthor(author);
             question.setTopic(topic);
             question.setFactor3(course);
             question.setContent(content);
@@ -103,9 +101,9 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/getquestionsbyopenid",method = RequestMethod.GET)
-    public Map<String,Object> getQuestionsByOpenid(QuestionPage questionPage){
+    public Map<String,Object> getQuestionsByOpenid(@RequestParam(value="factor1",defaultValue = "null") String factor1){
         Map<String,Object> listQuestion2 = new HashMap<String,Object>();
-        List<Question> questions = questionService.getQuestionsByOpenid(questionPage);
+        List<Question> questions = questionService.getQuestionsByOpenid(factor1);
 
         Iterator<Question> iter = questions.iterator();
         while (iter.hasNext()){
@@ -119,19 +117,16 @@ public class QuestionController {
     }
 
     @RequestMapping(value = "/getquestionsbycourse",method = RequestMethod.GET)
-    public Map<String,Object> getQuestionsByCourse(CoursePage coursePage){
+    public Map<String,Object> getQuestionsByCourse(@RequestParam(value="name",defaultValue = "null") String name){
 
-        System.out.println(coursePage.getName() + "-->" + coursePage.getPage());
         try {
-            String name = coursePage.getName();
             name = URLDecoder.decode(name, "UTF-8");
-            coursePage.setName(name);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }
 
         Map<String,Object> listQuestion2 = new HashMap<String,Object>();
-        List<Question> questions = questionService.getQuestionsByCourse(coursePage);
+        List<Question> questions = questionService.getQuestionsByCourse(name);
 
         Iterator<Question> iter = questions.iterator();
         while (iter.hasNext()){
@@ -158,7 +153,18 @@ public class QuestionController {
             e.printStackTrace();
         }
         Map<String,Object> questionmap = new HashMap<String,Object>();
-        List<Question> searchquestion = questionService.getSearch(index);
+        List<Question> allquestion = questionService.getAll();
+        List<Question> searchquestion = new LinkedList<Question>();
+
+        Iterator<Question> iter = allquestion.iterator();
+        while (iter.hasNext()){
+            Question question = iter.next();
+            String topic = question.getTopic();
+            String content = question.getContent();
+            if(topic.indexOf(index)!=-1||content.indexOf(index)!=-1){
+                searchquestion.add(question);
+            }
+        }
         questionmap.put("questions",searchquestion);
         return  questionmap;
     }
@@ -179,6 +185,8 @@ public class QuestionController {
         }
 
         questionmap.put("questions",questions);
+
+        questionmap.put("hasadministor",hasadministor);
 
         return questionmap;
     }

@@ -1,7 +1,6 @@
 package com.wss.springboot.service;
 
 import com.wss.springboot.bean.Answer;
-import com.wss.springboot.bean.AnswerPage;
 import com.wss.springboot.dao.AnswerMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -20,9 +19,9 @@ public class AnswerService {
         return queryAnswer;
     }
 
-    public List<Answer> getAnswersByOpenId(AnswerPage answerPage){
+    public List<Answer> getAnswersByOpenId(String factor1){
         List<Answer> queryAnswer = new ArrayList<Answer>();
-        queryAnswer = answerMapper.getAnswersByOpenid(answerPage);
+        queryAnswer = answerMapper.getAnswersByOpenid(factor1);
         return queryAnswer;
     }
 

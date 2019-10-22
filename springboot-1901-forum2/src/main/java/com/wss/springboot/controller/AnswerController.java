@@ -1,7 +1,6 @@
 package com.wss.springboot.controller;
 
 import com.wss.springboot.bean.Answer;
-import com.wss.springboot.bean.AnswerPage;
 import com.wss.springboot.bean.Article;
 import com.wss.springboot.service.AnswerService;
 import com.wss.springboot.service.ArticleService;
@@ -33,10 +32,9 @@ public class AnswerController {
     }
 
     @RequestMapping(value = "/getanswersbyopenid",method = RequestMethod.GET)
-    public Map<String,Object> getAnswersByOpenid(AnswerPage answerPage){
-        System.out.println(answerPage.getElement1() + "   " + answerPage.getPage());
+    public Map<String,Object> getAnswersByOpenid(@RequestParam(value="factor1",defaultValue="null") String factor1){
         Map<String,Object> listAnswer = new HashMap<String,Object>();
-        List<Answer> answers = answerService.getAnswersByOpenId(answerPage);
+        List<Answer> answers = answerService.getAnswersByOpenId(factor1);
         listAnswer.put("answerlist",answers);
         return listAnswer;
     }
@@ -50,14 +48,11 @@ public class AnswerController {
     public Answer insertAnswer(Answer answer){
         String element3 = answer.getElement3();
         String answercontent = answer.getAnswercontent();
-        String element6 = answer.getElement6();
         try {
             element3 = URLDecoder.decode(element3, "UTF-8");
             answer.setElement3(element3);
             answercontent = URLDecoder.decode(answercontent, "UTF-8");
             answer.setAnswercontent(answercontent);
-            element6 = URLDecoder.decode(element6, "UTF-8");
-            answer.setElement6(element6);
         } catch (UnsupportedEncodingException e) {
             e.printStackTrace();
         }

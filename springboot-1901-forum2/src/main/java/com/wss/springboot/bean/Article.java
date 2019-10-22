@@ -20,7 +20,7 @@ public class Article {
     private String hobby;
     private String fac1;
     private String fac2;
-    private String fac3;       //日期
+    private String fac3;
     private String fac4;
     private String fac5;
 

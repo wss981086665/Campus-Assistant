@@ -11,7 +11,10 @@ Page({
     wordnum: 0,
     ensure: false, 
     imageurl: [
-      
+      'https://b168.photo.store.qq.com/psb?/V11FQPcG0x3HZl/vLQ8ydlFPAYH3v5hcf1X.ZcxEs1c3ZQlXedIDhDRyp4!/b/dKgAAAAAAAAA&bo=4wgABeMIAAURBzA!&rf=viewer_4',
+      'https://b289.photo.store.qq.com/psb?/V11FQPcG0x3HZl/Z.loEautTFlheoAjR.j2LnrKEln9Tn7RWP0jm1x1fuQ!/b/dCEBAAAAAAAA&bo=gAxABqAP0AcRCYw!&rf=viewer_4',
+      'https://b290.photo.store.qq.com/psb?/V11FQPcG0x3HZl/fDJLAhypbErsHDA2C9NpmXbnI3glg1KvRc09WKhr.dQ!/b/dCIBAAAAAAAA&bo=gAegBYAHoAURCT4!&rf=viewer_4',
+      'https://b289.photo.store.qq.com/psb?/V11FQPcG0x3HZl/RSqsGYQ0N06bNA8eWbIVFhrbRAv9y5ZTys8Szeq0j6Q!/b/dCEBAAAAAAAA&bo=qwYABUAQMAwRCfo!&rf=viewer_4'
     ],
   },
 
@@ -78,12 +81,24 @@ Page({
    */
   onShow: function () {
     var that = this;
-    wx.getStorage({
-      key: 'ensure',
+    wx.request({
+      url: api.ip + 'ensure/ensurenumber',
+      method: 'GET',
+      data: {},
       success: function (res) {
-        that.setData({
-          ensure: res.data
-        })
+        var ensure = res.data.ensure;
+        if (ensure == null) {
+          var toastText = '获取数据失败' + res.data.errMsg;
+          wx.showToast({
+            title: toastText,
+            icon: '',
+            duration: 2000 //弹出时间
+          })
+        } else {
+          that.setData({
+            ensure: ensure,
+          });
+        }
       }
     })
   },

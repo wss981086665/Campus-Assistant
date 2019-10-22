@@ -2,24 +2,21 @@ page{
   background-color: rgb(243, 243, 243);
 }
 .container{
-  width: 100%;
+  width: 96%;
   height: 392rpx;
+  padding-left: 4%;
   background-color: white;
   border-bottom: 1rpx solid rgb(207, 207, 207);
 }
 .tip{
-  width: 97%;
+  width: 100%;
   height: 70rpx;
-  line-height: 70rpx;
   font-size: 16px;
-  padding-left: 3%;
   border-bottom: 1rpx solid rgb(207, 207, 207);
 }
 .content{
-  width: 94%;
+  width: 96%;
   height: 250rpx;
-  margin: 0 auto;
-  margin-left: 3%;
   font-size: 16px;
 }
 .content-length{

@@ -19,13 +19,6 @@ Page({
     })
   },
 
-  previewImage: function (e) {
-    var articles = [e.currentTarget.dataset.src];
-    wx.previewImage({
-      urls: articles
-    })
-  },
-
   onLoad: function (options) {
     this.setData({
       searchword: options.searchword
@@ -71,12 +64,24 @@ Page({
 
   onShow: function () {
     var that = this;
-    wx.getStorage({
-      key: 'ensure',
+    wx.request({
+      url: api.ip + 'ensure/ensurenumber',
+      method: 'GET',
+      data: {},
       success: function (res) {
-        that.setData({
-          ensure: res.data
-        })
+        var ensure = res.data.ensure;
+        if (ensure == null) {
+          var toastText = '获取数据失败' + res.data.errMsg;
+          wx.showToast({
+            title: toastText,
+            icon: '',
+            duration: 2000 //弹出时间
+          })
+        } else {
+          that.setData({
+            ensure: ensure,
+          });
+        }
       }
     })
   },

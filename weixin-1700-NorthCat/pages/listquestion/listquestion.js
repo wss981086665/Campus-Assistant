@@ -10,14 +10,12 @@ Page({
     openid: '',
     hasvalue: true,
     ensure: false, 
-    judgedelete: true,
-    rejudge: true,
     imageurl: [
-      
+      'https://b168.photo.store.qq.com/psb?/V11FQPcG0x3HZl/vLQ8ydlFPAYH3v5hcf1X.ZcxEs1c3ZQlXedIDhDRyp4!/b/dKgAAAAAAAAA&bo=4wgABeMIAAURBzA!&rf=viewer_4',
+      'https://b289.photo.store.qq.com/psb?/V11FQPcG0x3HZl/Z.loEautTFlheoAjR.j2LnrKEln9Tn7RWP0jm1x1fuQ!/b/dCEBAAAAAAAA&bo=gAxABqAP0AcRCYw!&rf=viewer_4',
+      'https://b290.photo.store.qq.com/psb?/V11FQPcG0x3HZl/fDJLAhypbErsHDA2C9NpmXbnI3glg1KvRc09WKhr.dQ!/b/dCIBAAAAAAAA&bo=gAegBYAHoAURCT4!&rf=viewer_4',
+      'https://b289.photo.store.qq.com/psb?/V11FQPcG0x3HZl/RSqsGYQ0N06bNA8eWbIVFhrbRAv9y5ZTys8Szeq0j6Q!/b/dCEBAAAAAAAA&bo=qwYABUAQMAwRCfo!&rf=viewer_4'
     ],
-    previews2: [],
-    page: 0,
-    hiddenpage: true
   },
 
   checkanswer: function(e){
@@ -46,97 +44,17 @@ Page({
       confirmText: '删除',
       success: function (res) {
         if (res.confirm) {
-          wx.showLoading({
-            title: '正在处理',
-          })
           wx.request({
             url: api.ip + 'superadmin/deletequestionbyid?id=' + questionid,
-            success:function() {
-              wx.showToast({
-                title: '删除成功',
-              })
-              that.onLoad();
-            }
           })
+          that.onLoad();
         }
       }
     })
   },
 
-  showcommentimg: function (e) {
-    var index = e.currentTarget.dataset.demo;
-    var newarray = [index];
-    this.data.previews2 = this.data.previews2.concat(newarray);
-    var previews2 = this.data.previews2
-    wx.previewImage({
-      urls: previews2
-    })
-    this.data.previews2 = []
-  },
-
-  condelete: function() {
-    this.setData({
-      judgedelete: false
-    })
-  },
-
-  nodelete: function () {
-    this.setData({
-      judgedelete: true
-    })
-  },
-
-  loadmore:function() {
-    var that = this;
-    var page = that.data.page + 1;
-    wx.getStorage({
-      key: 'userOpenid',
-      success: function (res) {
-        var openid = res.data;
-        wx.showLoading({
-          title: '正在加载',
-        })
-        wx.request({
-          url: api.ip + 'superadmin/getquestionsbyopenid?factor1=' + openid + '&page=' + page * 10,
-          method: 'GET',
-          data: {},
-          success: function (res) {
-            var iquestionlist = res.data.questionlist;
-            if (iquestionlist == null) {
-              var toastText = '获取数据失败' + res.data.errMsg;
-              wx.showToast({
-                title: toastText,
-                icon: '',
-                duration: 2000 //弹出时间
-              })
-            } else {
-              if (iquestionlist.length == 0) {
-                wx.showToast({
-                  title: '没有更多内容',
-                  icon: 'none',
-                  duration: 850
-                })
-              } else {
-                var theques = that.data.questionlist;
-                that.setData({
-                  questionlist: theques.concat(iquestionlist),
-                  page: page
-                });
-                wx.showToast({
-                  title: '加载成功',
-                  duration: 850
-                })
-              }
-            }
-          }
-        })
-      },
-    })
-  },
-
   onLoad: function (options) {
     var that = this;
-    var page = that.data.page;
     wx.getStorage({
       key: 'userOpenid',
       success: function (res) {
@@ -145,7 +63,7 @@ Page({
           title: '正在加载',
         })
         wx.request({
-          url: api.ip + 'superadmin/getquestionsbyopenid?factor1=' + openid + '&page=' + page * 10,
+          url: api.ip + 'superadmin/getquestionsbyopenid?factor1=' + openid,
           method: 'GET',
           data: {},
           success: function (res) {
@@ -158,19 +76,19 @@ Page({
                 duration: 2000 //弹出时间
               })
             } else {
-              if (questionlist.length == 0) {
+              if(questionlist.length==0){
                 that.setData({
                   hasvalue: false
                 })
-              } else {
-                that.setData({
-                  questionlist: questionlist,
-                  rejudge: false,
-                });
-                if (questionlist.length == 10) {
+              }else{
+                if (questionlist.length == 0) {
                   that.setData({
-                    hiddenpage: false
+                    hasvalue: false
                   })
+                } else {
+                  that.setData({
+                    questionlist: questionlist,
+                  });
                 }
               }
               wx.hideLoading();

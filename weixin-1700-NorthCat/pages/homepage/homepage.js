@@ -24,7 +24,6 @@ Page({
     imageurl: [
       
     ],
-    questionimg: ''
   },
 
   showInput: function () {
@@ -38,11 +37,31 @@ Page({
       inputShowed: false,
       havevalue: true
     });
+    var that = this;
+    wx.request({
+      url: api.ip + 'superadmin/getsixquestion',
+      method: 'GET',
+      data: {},
+      success: function (res) {
+        var questions = res.data.questions;
+        if (questions == null) {
+          var toastText = '获取数据失败' + res.data.errMsg;
+          wx.showToast({
+            title: toastText,
+            icon: '',
+            duration: 2000 //弹出时间
+          })
+        } else {
+          that.setData({
+            questions: questions,
+          });
+        }
+      }
+    })
   },
   clearInput: function () {
     this.setData({
-      inputVal: "",
-      havevalue: true,
+      inputVal: ""
     });
   },
   inputTyping: function (e) {
@@ -79,21 +98,11 @@ Page({
             duration: 2000 //弹出时间
           })
         } else {
-          if (questions.length == 0){
-            that.setData({
-              hasvalue: false,
-              havevalue: true,
-              questions: questions,
-              inputShowed: false
-            })
-          } else {
-            that.setData({
-              hasvalue: true,
-              havevalue: true,
-              questions: questions,
-              inputShowed: false
-            });
-          }
+          that.setData({
+            questions: questions,
+            havevalue: true,
+            inputShowed: false
+          });
         }
       }
     })
@@ -158,14 +167,13 @@ Page({
     var openid = e.currentTarget.dataset.factor1;
     var avatarUrl = e.currentTarget.dataset.factor2;
     var content = e.currentTarget.dataset.content;
-    var questionimg = e.currentTarget.dataset.factor6;
     
     wx.getStorage({
       key: 'hasUserInfo',
       success: function (res) {
         if (res.data == true) {
           wx.navigateTo({
-            url: '../answer/answer?topic=' + topic + '&author=' + author + '&content=' + content + '&openid=' + openid + '&nickName=' + nickName + '&avatarUrl=' + avatarUrl + '&id=' + id + '&questionimg='+ questionimg,
+            url: '../answer/answer?topic=' + topic + '&author=' + author + '&content=' + content + '&openid=' + openid + '&nickName=' + nickName + '&avatarUrl=' + avatarUrl + '&id=' + id,
           });
         } else {
           wx.showModal({
@@ -235,18 +243,6 @@ Page({
 
   onLoad: function (options) {
     var that = this;
-    wx.getStorage({
-      key: 'hasadministor',
-      success: function(res) {
-        that.setData({
-          hasadministor: res.data
-        })
-      },
-    })
-  },
-
-  onReady: function () {
-    var that = this;
     wx.showLoading({
       title: '正在加载',
     })
@@ -258,7 +254,7 @@ Page({
         })
         var openid = res.data;
         wx.request({
-          url: api.ip + 'superadmin/getrandomquestion?openid=' + openid,
+          url: api.ip + 'superadmin/getrandomquestion?openid='+openid,
           method: 'GET',
           data: {},
           success: function (res) {
@@ -272,9 +268,16 @@ Page({
                 duration: 2000 //弹出时间
               })
             } else {
-              that.setData({
-                questions: questions,
-              });
+              if (questions.length == 0) {
+                that.setData({
+                  hasvalue: false
+                })
+              } else {
+                that.setData({
+                  questions: questions,
+                  hasadministor: hasadministor,
+                });
+              }
               wx.hideLoading();
             }
           }
@@ -283,14 +286,30 @@ Page({
     })
   },
 
+  onReady: function () {
+    
+  },
+
   onShow: function () {
     var that = this;
-    wx.getStorage({
-      key: 'ensure',
+    wx.request({
+      url: api.ip + 'ensure/ensurenumber',
+      method: 'GET',
+      data: {},
       success: function (res) {
-        that.setData({
-          ensure: res.data
-        })
+        var ensure = res.data.ensure;
+        if (ensure == null) {
+          var toastText = '获取数据失败' + res.data.errMsg;
+          wx.showToast({
+            title: toastText,
+            icon: '',
+            duration: 2000 //弹出时间
+          })
+        } else {
+          that.setData({
+            ensure: ensure,
+          });
+        }
       }
     })
   },
@@ -307,6 +326,9 @@ Page({
     // 显示顶部刷新图标
     wx.showNavigationBarLoading();
     var that = this;
+    // that.setData({
+    //   hideHeader: false
+    // }),
     wx.request({
       url: api.ip + 'superadmin/getrandomquestion',
       method: 'GET',
@@ -322,8 +344,8 @@ Page({
           })
         } else {
           that.setData({
-            questions: questions,
-            hasvalue: true,
+            questions: questions
+            // hideHeader: true
           });
         }
       }

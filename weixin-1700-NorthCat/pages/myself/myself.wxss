@@ -1,94 +1,84 @@
 .top{
   width: 100%;
-  height: 180rpx;
-  padding-top: 30rpx;
-  padding-bottom: 50rpx;
-  background-color: #64B4FF;
+  height: 165rpx;
+  padding-top: 70rpx;
 }
 .userinfo{
-  /* background: url("http://www.xztywss.top/img/luntan/topimg.jpg"); */
+  background: url("http://www.xztywss.top/img/luntan/topimg.jpg");
   background-size: 100% 100%;
 }
 .login{
-  width: 60%;
+  width: 70%;
   height: 80rpx;
   line-height: 80rpx;
   color: white;
-  background-color: #64B4FF;
-  /* border: 1rpx solid rgb(128, 128, 128); */
-  box-shadow: rgba(182, 182, 182, 0.25) 0px 1px 0px, inset rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(0,0,0,0.25) 0px 0px 0px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+  background-color: skyblue;
 }
 .head{
-  width: 150rpx;
-  height: 150rpx;
+  width: 128rpx;
+  height: 128rpx;
   border-radius: 50%;
-  margin-left: 60rpx;
+  margin-left: 30rpx;
   float: left;
   border: 7rpx solid rgb(216, 216, 216);
 }
 .headimg {
-  width: 100%;
-  height: 100%;
+  width: 128rpx;
+  height: 128rpx;
   border-radius: 50%;
 }
 .username {
   width: 450rpx;
   height: 40%;
-  font-size: 20px;
+  font-size: 16px;
   line-height: 70rpx;
   float: left;
-  /* color: rgb(58, 58, 58); */
-  color: white;
+  color: rgb(0, 0, 0);
   font-weight: 700;
-  margin-top: 20rpx;
   margin-left: 30rpx;
 }
 .autograph{
   width: 400rpx;
-  height: 30%;
+  height: 40%;
   float: left;
   font-size: 12px;
-  color: white;
+  color: gray;
   margin-left: 30rpx;
 }
 .autograph-text{
   width: 100%;
   height: 100%;
 }
-.middle-con{
-  width: 94%;
-  height: 180rpx;
-  margin: 0 auto;
-  border-radius: 10rpx;
-  margin-top: -20px;
-  margin-bottom: 20rpx;
-  box-shadow: 0 0 1px #B4B4B4;
-  overflow: hidden
+.bottom{
+  width: 95%;
+  height: 60rpx;
+  line-height: 60rpx;
+  padding-left: 5%;
+  font-size: 12px;
+  color: gray;
+  /* border-bottom: 1px solid rgb(219, 219, 219); */
+}
+.bottom-text{
+  width: 100%;
+  height: 100%;
+  color: rgb(78, 78, 78);
 }
 .middle{
   width: 100%;
-  height: 100%;
+  height: 160rpx;
   display: flex;
   flex-direction: row;
   padding-bottom: 10rpx;
-  /* margin-top: 10rpx; */
-  background-color: white;
-  margin-bottom: 10rpx;
-  border-radius: 10rpx;
-}
-.middle-button{
-  border-radius: 10rpx;
+  border-bottom: 20rpx solid rgb(216, 216, 216);
 }
 .middles{
   width: 31%;
   height: 100%;
-  border-radius: 10rpx;
 }
 .middle-img {
   width: 30%;
-  height: 70rpx;
+  height: 60rpx;
   margin-left: 34%;
-  border-radius: 10rpx;           
   margin-top: 40rpx;
   opacity: 0.8;
 }
@@ -100,14 +90,12 @@
 .middle-text{
   padding: 0;
   width: 100%;
-  height: 30rpx;
+  height: 20rpx;
   background-color: white;
   text-align: center;
-  line-height: 30rpx;
-  color: rgb(102, 102, 102);
-  font-size: 13px;
-  margin-top: 10rpx;
-  font-weight: 500;
+  line-height: 20rpx;
+  color: gray;
+  font-size: 12px;
 }
 .openid{
   display: none;
@@ -122,102 +110,54 @@
   float: right;
 }
 .container2{
-  width: 95%;
-  padding-left: 5%;
-}
-.searcharticle-on{
-  padding: 0;
-  margin: 0;
   width: 100%;
+  display: flex;
+  flex-direction: column;
+  border-bottom: 1px solid rgb(216, 216, 216);
 }
-.asdf{
-  width: 95%;
-  height: 100rpx;
-  color: rgb(88, 88, 88);
-  line-height: 100rpx;
-  border-bottom: 1rpx solid gainsboro;
-  font-size: 16px;
-}
-.asdf-img{
-  width: 50rpx;
-  height: 50rpx;
-  float: left;
-  margin-right: 10rpx;
-  margin-top: 30rpx;
-  opacity: 0.8;
+.myarticle,
+.searcharticle,
+.declare{
+  width: 90%;
+  height: 80rpx;
+  color: rgb(51, 51, 51);
+  line-height: 80rpx;
+  padding-left: 40rpx;
+  font-size: 14px;
 }
 .direction-img{
   width: 40rpx;
   height: 40rpx;
   float: right;
-  margin-top: 30rpx;
+  margin-top: 23rpx;
   opacity: 0.8;
 }
-.hide-tip{
-  width: 100%;
-  height: 100px;
-  font-size: 30px;
-  font-weight: 700;
-  line-height: 100px;
-  text-align: center;
-  color: rgb(175, 175, 175);
-}
-.hide-con{
-  width: 95%;
-  font-size: 12px;
-  margin: 0 auto;
-  color: rgb(189, 189, 189);
-}
-.hide-image{
+.image{
   width: 96%;
   height: 400rpx;
   margin: 10rpx auto;
   border-radius: 10rpx;
-  margin-top: 10px;
-  box-shadow: 0 0 15rpx 0 rgb(190, 190, 190);
-}
-.customservice-flush{
-  width: 120rpx;
-  height: 70rpx;
-  position: fixed;
-  bottom: 20rpx;
-  left: 30rpx;
-  border-radius: 10rpx;
-  overflow: hidden;
-}
-.flush{
-  padding: 0;
-  margin: 0;
-  width: 110%;
-  height: 110%;
-  border-radius: 10rpx;
-  text-align: center;
-  line-height: 70rpx;
-  background-color: #7AC5CD;
-  margin: -2rpx -2rpx;
-  border: 0;
-  color: white;
+  background-color: rgba(255, 255, 0,0.5);
 }
 .customservice{
-  width: 120rpx;
-  height: 70rpx;
+  width: 150rpx;
+  height: 200rpx;
   position: fixed;
   bottom: 20rpx;
-  right: 30rpx;
-  border-radius: 10rpx;
-  overflow: hidden;
+  right: 20rpx;
+}
+.customservice{
+  width: 100%;
+  height: 80rpx;
+  position: fixed;
+  bottom: 0;
+  left: 0;
 }
 .kefu{
-  padding: 0;
-  margin: 0;
-  width: 110%;
-  height: 110%;
-  border-radius: 10rpx;
+  width: 100%;
+  height: 80rpx;
   text-align: center;
-  line-height: 70rpx;
-  background-color: #64B4FF;
-  margin: -2rpx -2rpx;
-  border: 0;
-  color: white;
-  box-shadow: rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(255,255,255,0.25) 0px 1px 0px, inset rgba(0,0,0,0.25) 0px 0px 0px, inset rgba(255,255,255,0.03) 0px 20px 0px, inset rgba(0,0,0,0.15) 0px -20px 20px, inset rgba(255,255,255,0.05) 0px 20px 20px;
+  line-height: 80rpx;
+  border-radius: 0;
+  background-color: rgb(236, 236, 236);
 }
